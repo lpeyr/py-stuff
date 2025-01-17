@@ -9,6 +9,7 @@ def evolution(liste_emissions, t, start=2000, end=2024):
     """
     return None
 
+
 def tri(liste):
     """
     Tri une liste de nombres en place
@@ -17,7 +18,8 @@ def tri(liste):
     """
     return None
 
-def tri_mots(l: list, alpha: bool)->list:
+
+def tri_mots(l: list, alpha: bool) -> list:
     """
     Tri des mots dans l'ordre alpha ou anti-alpha
     l: liste de mots à trier
