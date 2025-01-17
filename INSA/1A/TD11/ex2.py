@@ -1,9 +1,10 @@
 from math import sqrt
 
-def est_divisible(n, p) :
-    """ 
-    Renvoie vrai si et seulement si n est divisible par p. 
-    
+
+def est_divisible(n, p):
+    """
+    Renvoie vrai si et seulement si n est divisible par p.
+
     Parametres
     ----------
     n, p : deux entiers
@@ -15,8 +16,8 @@ def est_divisible(n, p) :
     return n % p == 0
 
 
-def get_diviseurs_stricts(n) :
-    """ 
+def get_diviseurs_stricts(n):
+    """
     Renvoie la liste des diviseurs stricts de n.
     Parametres
     ----------
@@ -34,15 +35,14 @@ def get_diviseurs_stricts(n) :
         j += 1
     print(j)
     return divs, j
-    
 
 
-def est_parfait(n) :
-    """ Renvoie vrai si et seulement si n est un nombre parfait. 
+def est_parfait(n):
+    """Renvoie vrai si et seulement si n est un nombre parfait.
     Parametres
     ----------
     n : un entier
-    
+
     Retour
     -------
     Vrai ou Faux
@@ -53,6 +53,7 @@ def est_parfait(n) :
         s += nb
 
     return s == n
+
 
 def parfait_range(a, b):
     """
@@ -68,21 +69,24 @@ def parfait_range(a, b):
             parfaits.append(p)
     return parfaits
 
+
 ### Programme principal
 # Test de est_divisible
-#print(est_divisible(10, 2)) # True
-#print(est_divisible(10, 3)) # False
-#print(est_divisible(10, 0)) # Erreur
+# print(est_divisible(10, 2)) # True
+# print(est_divisible(10, 3)) # False
+# print(est_divisible(10, 0)) # Erreur
 
 # Test de get_diviseurs_stricts
 
-#print(get_diviseurs_stricts(10)) # [1, 2, 5]
-#print(get_diviseurs_stricts(3)) # [1]
+# print(get_diviseurs_stricts(10)) # [1, 2, 5]
+# print(get_diviseurs_stricts(3)) # [1]
 
 
 # Test de est_parfait
 
-print(est_parfait(6)) # True
-print(est_parfait(5)) # False
+print(est_parfait(6))  # True
+print(est_parfait(5))  # False
 
-print(parfait_range(0, 500)) # \sum_{k=a}^b\left\lfloor \frac{k}{2} \right\rfloor\newline=\=\frac{b(b+1)}{4}-\frac{a(a+1)}{4}=\frac{b²+b-a²-a}{4}=\frac{(b-a)(b+a+1)}{4}
+print(
+    parfait_range(0, 500)
+)  # \sum_{k=a}^b\left\lfloor \frac{k}{2} \right\rfloor\newline=\=\frac{b(b+1)}{4}-\frac{a(a+1)}{4}=\frac{b²+b-a²-a}{4}=\frac{(b-a)(b+a+1)}{4}

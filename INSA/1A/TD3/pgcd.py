@@ -6,4 +6,5 @@ def pgcd(a, b):
         r = a % b
     return b
 
+
 print(pgcd(25, 15))

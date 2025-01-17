@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 
+
 def calcul_moyenne(liste):
     s = 0
     for x in liste:
@@ -21,6 +22,7 @@ def conversion_temperature(temps):
     for i in t:
         f.append(int(i))
     return f
+
 
 # Read temperatures
 f = open("temp.txt", "r", encoding="utf8")
