@@ -15,6 +15,11 @@
 
 "py-stuff" is repo with various code snippets. These are personnal snipets and/or programs I've written for school or other projects.
 
+## Structure
+- Scripts : useful scripts/code snippets
+- NSI : Highschool NSI speciality projects
+- INSA : INSA Lyon school projects/homework 
+
 ## License
 
 This repo is under the [MIT](https://github.com/lpeyr/Python-Stuff/blob/main/LICENSE) License
