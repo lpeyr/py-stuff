@@ -8,7 +8,7 @@ def tri_evenements(evenements: list):
     Entree :
         - evenements : liste d'evenements
     Sortie :
-        Liste 2D d'evenements tries selon le jour et l'heure.
+        Liste d'evenements tries selon le jour et l'heure.
     """
     res = []
     # tri par insertion
@@ -40,12 +40,10 @@ def nombre_semaine_restantes() -> int:
     ).days // 7
 
 
-def recuperer_evenements(n: int) -> list[list]:
+def recuperer_evenements(n: int) -> list:
     """
-    Obtient les evenements tries de la semaine actuelle + n semaine.
-    Exemple : Si n = 1, les evenements de la semaine suivante par rapport a la semaine actuelle seront obtenus.
-              Si n = -1, les evenements de la semaine precedente par rapport a la semaine actuelle seront obtenus.
-    Retourne : Une liste 2D d'evenements de la semaine [evenements_lundi, evenements_mardi, ...]
+    Obtient les evenements tries de la semaine actuelle jusqu'a n semaines plus tard.
+    Retourne : Une liste d'evenements
     """
     calendrier = cal.creer_calendrier_url(LIEN_CALENDRIER)
     deb = cal.lundi_de_la_semaine(cal.aujourdhui())
