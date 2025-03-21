@@ -8,10 +8,12 @@
 ## Fonctions
 ### Fonctions à coder
 ``` python
-def init_grille(x, y) -> list[list]:
+def init_grille(x, y, max=3) -> list[list]:
   """
   Initialise une grille de taille x * y.
-  Chaque case est remplie aléatoirement avec un bonbon (fonction random.randint() entre 0 et 3)
+  Chaque case est remplie aléatoirement avec un bonbon (fonction random.randint() entre 0 et 3), tout en s'assurant qu'il n'y a pas de combinaisons possibles.
+  Entrées
+    - max : Le nombre de bonbons ajdaçants max pour faire une combinaison.
   Sortie :
     - grille : une liste 2D avec des valeurs aléatoires.
   """
@@ -71,6 +73,11 @@ def demander_utilisateur_bonbons()
   Demander à l'utilisateur les deux bonbons qu'il souhaite échanger ; il faut soit que x1 = x2 ou y1 = y2.
   Retourne les coordonnées deux deux bonbons Tuple(Tuple(x1, y1), Tuple(x2, y2)
   """
+
+def combinaison_possible(grille)
+  """
+  Renvoie True si des combinaisons sont possibles.
+  """
 ```
 
 ### Fonctions Imposées
@@ -114,7 +121,7 @@ def test_detecte_coordonnees_combinaison():
 ## Programme principal
 ``` python
 grille = init_grille(5, 5)
-while True:
+while combinaison_possible(grille):
 
   (b1, b2) = demander_utilisateur_bonbons()
   
