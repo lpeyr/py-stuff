@@ -73,13 +73,15 @@ def inserer_bonbons(grille, b1, b2)
 def detecte_coordonnees_combinaison(grille, bonbon, max=3):
 """
 Vérifie si les bonbons sur la ligne ou la colonne du bonbon forment une combinaison. On utilisera une boucle while.
-Algorithme :
+Exemple d'Algorithme pour les lignes :
   CompteurCombi <- 0
   i <- 0
+  x <- i
   BonbonCombi=BonbonLigne[0]
   Tant que CompteurCombi < max et que i < TailleLigne:
     Si BonbonCombi != Ligne[i]:
       CompteurCombi = 0
+      x <- i
     Sinon:
       CompteurCombi += 1
     
