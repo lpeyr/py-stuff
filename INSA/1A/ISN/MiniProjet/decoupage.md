@@ -45,7 +45,7 @@ def obtenir_bonbons_ligne_dessus(b1, b2)
   Sortie : Une liste 2D de bonbons list[list[Tuple(x,y)]]
   """
 
-def decaler_bonbon_ligne(grille, ligne, b1, b2)
+def decaler_bonbon(grille, ligne, b1, b2)
   """
   Décale les bonbons entre b1 et b2 qui sont situés au-dessus de la ligne _ligne_. Cette fonction est appelée après avoir supprimé les bonbons entre b1 et b2. Pour chaque ligne de 0 à ligne-1, la fonction prend les bonbons de la ligne entre les coordonnées pertinentes et les décalent vers le bas.
   Entrées :
@@ -64,6 +64,12 @@ def inserer_bonbons(grille, b1, b2)
     - b1 : objet Tuple (x1, y1) représentant les coordonées du premier bonbon
     - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
   Sortie : None
+  """
+
+def demander_utilisateur_bonbons()
+  """
+  Demander à l'utilisateur les deux bonbons qu'il souhaite échanger ; il faut soit que x1 = x2 ou y1 = y2.
+  Retourne les coordonnées deux deux bonbons Tuple(Tuple(x1, y1), Tuple(x2, y2)
   """
 ```
 
@@ -104,4 +110,22 @@ def test_detecte_coordonnees_combinaison():
   Pour chaque cas de test, affiche True si le test passe,
   False sinon
   """
+```
+## Programme principal
+``` python
+grille = init_grille(5, 5)
+while True:
+
+  (b1, b2) = demander_utilisateur_bonbons()
+  
+  echanger_bonbon(grille, b1, b2)
+  combinaison = detecte_coordonnees_combinaison(b1)
+  if len(combinaison) == 0:
+    combinaison = detecte_coordonnees_combinaison(b2)
+  
+  if len(combinaison) != 0: # Si une combinaison est possible
+    retirer_bonbon(grille, combinaison[0], combinaison[-1]) 
+    decaler_bonbon(grille, combinaison[0], combinaison[-1])
+    inserer_bonbons(grille, (0, combinaison[0][1]), (0, combinaison[-1][1]))
+
 ```
