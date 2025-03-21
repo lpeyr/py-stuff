@@ -8,10 +8,12 @@
 ## Fonctions
 ### Fonctions à coder
 ``` python
-def init_grille(x, y) -> list[list]:
+def init_grille(x, y, max=3) -> list[list]:
   """
   Initialise une grille de taille x * y.
-  Chaque case est remplie aléatoirement avec un bonbon (fonction random.randint() entre 0 et 3)
+  Chaque case est remplie aléatoirement avec un bonbon (fonction random.randint() entre 0 et 3), tout en s'assurant qu'il n'y a pas de combinaisons possibles.
+  Entrées
+    - max : Le nombre de bonbons ajdaçants max pour faire une combinaison.
   Sortie :
     - grille : une liste 2D avec des valeurs aléatoires.
   """
@@ -36,17 +38,16 @@ def retirer_bonbon(grille, b1, b2):
   Sortie : None
   """
 
-def obtenir_bonbons_ligne_dessus(grille, b1, b2)
+def obtenir_bonbons_ligne_dessus(b1, b2)
   """
-  Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
+  Obtient les coordonnées des bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
   Entrées :
-    - grille : la grille du jeu
     - b1 : objet Tuple (x1, y1) représentant les coordonées du premier bonbon
     - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
   Sortie : Une liste 2D de bonbons list[list[Tuple(x,y)]]
   """
 
-def decaler_bonbon_ligne(grille, ligne, b1, b2)
+def decaler_bonbon(grille, ligne, b1, b2)
   """
   Décale les bonbons entre b1 et b2 qui sont situés au-dessus de la ligne _ligne_. Cette fonction est appelée après avoir supprimé les bonbons entre b1 et b2. Pour chaque ligne de 0 à ligne-1, la fonction prend les bonbons de la ligne entre les coordonnées pertinentes et les décalent vers le bas.
   Entrées :
@@ -65,6 +66,17 @@ def inserer_bonbons(grille, b1, b2)
     - b1 : objet Tuple (x1, y1) représentant les coordonées du premier bonbon
     - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
   Sortie : None
+  """
+
+def demander_utilisateur_bonbons()
+  """
+  Demander à l'utilisateur les deux bonbons qu'il souhaite échanger ; il faut soit que x1 = x2 ou y1 = y2.
+  Retourne les coordonnées deux deux bonbons Tuple(Tuple(x1, y1), Tuple(x2, y2)
+  """
+
+def combinaison_possible(grille)
+  """
+  Renvoie True si des combinaisons sont possibles.
   """
 ```
 
@@ -105,4 +117,22 @@ def test_detecte_coordonnees_combinaison():
   Pour chaque cas de test, affiche True si le test passe,
   False sinon
   """
+```
+## Programme principal
+``` python
+grille = init_grille(5, 5)
+while combinaison_possible(grille):
+
+  (b1, b2) = demander_utilisateur_bonbons()
+  
+  echanger_bonbon(grille, b1, b2)
+  combinaison = detecte_coordonnees_combinaison(b1)
+  if len(combinaison) == 0:
+    combinaison = detecte_coordonnees_combinaison(b2)
+  
+  if len(combinaison) != 0: # Si une combinaison est possible
+    retirer_bonbon(grille, combinaison[0], combinaison[-1]) 
+    decaler_bonbon(grille, combinaison[0], combinaison[-1])
+    inserer_bonbons(grille, (0, combinaison[0][1]), (0, combinaison[-1][1]))
+
 ```
