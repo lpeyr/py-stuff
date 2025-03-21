@@ -54,5 +54,12 @@ def obtenir_bonbons_ligne_dessus(b1:tuple[int,int], b2:tuple[int, int]) -> list[
     Sortie : Une liste 2D de bonbons list[list[Tuple(x,y)]]
     """
     bonbon_dessus = []
-    
-    
+    i = 0
+    while b1[0] - i >= 0:
+        bonbon_dessus.append([(b1[0] - i, b1[1]),
+                              (b1[0] - i, b1[1]-1), 
+                              (b2[0] - i, b2[1])])
+        i += 1
+    return bonbon_dessus
+
+obtenir_bonbons_ligne_dessus((1,3), (3,3))
