@@ -36,11 +36,10 @@ def retirer_bonbon(grille, b1, b2):
   Sortie : None
   """
 
-def obtenir_bonbons_ligne_dessus(grille, b1, b2)
+def obtenir_bonbons_ligne_dessus(b1, b2)
   """
-  Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
+  Obtient les coordonnées des bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
   Entrées :
-    - grille : la grille du jeu
     - b1 : objet Tuple (x1, y1) représentant les coordonées du premier bonbon
     - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
   Sortie : Une liste 2D de bonbons list[list[Tuple(x,y)]]
