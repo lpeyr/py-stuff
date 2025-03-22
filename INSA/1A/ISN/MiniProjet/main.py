@@ -75,3 +75,34 @@ def obtenir_bonbons_ligne_dessus(
 
 
 obtenir_bonbons_ligne_dessus((1, 3), (3, 3))
+
+
+# Programme principal
+def __main__():
+    grille = init_grille(5, 5)
+
+    while combinaison_possible(grille):
+
+        (b1, b2) = demander_utilisateur_bonbons()
+
+        echanger_bonbon(grille, b1, b2)
+        combinaison = detecte_coordonnees_combinaison(grille, b1)
+
+        while len(combinaison) != 0:  # Tant qu'il y a des combinaisons
+            retirer_bonbon(
+                grille, combinaison[0], combinaison[-1]
+            )  # On retire les bonbons de la combinaison
+            decaler_bonbon(
+                grille, combinaison[0], combinaison[-1]
+            )  # On décale les bonbons au dessus de la combinaison supprimée vers le bas
+            inserer_bonbons(
+                grille, (0, combinaison[0][1]), (0, combinaison[-1][1])
+            )  # On insère des bonbons aléatoires en haut de la grille
+            affichage_grille(grille, 4)  # On affiche la grille
+            combinaison = detecte_coordonnees_combinaison(
+                grille, b1
+            )  # On vérifie si il y a d'autres combinaisons
+            if len(combinaison) == 0:  # Si il n'y a plus de combinaisons
+                combinaison = detecte_coordonnees_combinaison(
+                    grille, b2
+                )  # On vérifie si il y a d'autres combinaisons avec le deuxième bonbon
