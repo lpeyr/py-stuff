@@ -1,13 +1,18 @@
-# Découpage fonctionnel
+# Découpage fonctionnel Candy Crush
+
 ## Types de bonbons
-- -1 : Case vide (ne sera pas utilisée dans le jeu final)
-- 0 : Rouge
-- 1 : Bleu
-- 2 : Vert
-- 3 : Jaune
+
+-   -1 : Case vide (ne sera pas utilisée dans le jeu final)
+-   0 : Rouge
+-   1 : Bleu
+-   2 : Vert
+-   3 : Jaune
+
 ## Fonctions
+
 ### Fonctions à coder
-``` python
+
+```python
 def init_grille(x, y, max=3) -> list[list]:
   """
   Initialise une grille de taille x * y.
@@ -27,7 +32,7 @@ def echanger_bonbon(grille, b1, b2) -> None:
     - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
   Sortie : None
   """
-  
+
 def retirer_bonbon(grille, b1, b2):
   """
   Retire les bonbons entre b1 et b2 en remplaçant leur valeurs par des -1.
@@ -81,7 +86,8 @@ def combinaison_possible(grille)
 ```
 
 ### Fonctions Imposées
-``` python
+
+```python
 def detecte_coordonnees_combinaison(grille, bonbon, max=3):
 """
 Vérifie si les bonbons sur la ligne ou la colonne du bonbon forment une combinaison. On utilisera une boucle while.
@@ -96,7 +102,7 @@ Exemple d'Algorithme pour les lignes :
       x <- i
     Sinon:
       CompteurCombi += 1
-    
+
 Entrées :
   - grille : la grille du jeu
   - bonbon : Tuple(x,y) représentant les cordonnées du bonbon
@@ -118,21 +124,25 @@ def test_detecte_coordonnees_combinaison():
   False sinon
   """
 ```
+
 ## Programme principal
-``` python
+
+```python
 grille = init_grille(5, 5)
 while combinaison_possible(grille):
 
   (b1, b2) = demander_utilisateur_bonbons()
-  
+
   echanger_bonbon(grille, b1, b2)
-  combinaison = detecte_coordonnees_combinaison(b1)
-  if len(combinaison) == 0:
-    combinaison = detecte_coordonnees_combinaison(b2)
-  
-  if len(combinaison) != 0: # Si une combinaison est possible
-    retirer_bonbon(grille, combinaison[0], combinaison[-1]) 
-    decaler_bonbon(grille, combinaison[0], combinaison[-1])
-    inserer_bonbons(grille, (0, combinaison[0][1]), (0, combinaison[-1][1]))
+  combinaison = detecte_coordonnees_combinaison(grille, b1)
+
+  while (len(combinaison) != 0): # Tant qu'il y a des combinaisons
+    retirer_bonbon(grille, combinaison[0], combinaison[-1]) # On retire les bonbons de la combinaison
+    decaler_bonbon(grille, combinaison[0], combinaison[-1]) # On décale les bonbons au dessus de la combinaison supprimée vers le bas
+    inserer_bonbons(grille, (0, combinaison[0][1]), (0, combinaison[-1][1])) # On insère des bonbons aléatoires en haut de la grille
+    affichage_grille(grille, 4) # On affiche la grille
+    combinaison = detecte_coordonnees_combinaison(grille, b1) # On vérifie si il y a d'autres combinaisons
+    if len(combinaison) == 0: # Si il n'y a plus de combinaisons
+      combinaison = detecte_coordonnees_combinaison(grille, b2) # On vérifie si il y a d'autres combinaisons avec le deuxième bonbon
 
 ```
