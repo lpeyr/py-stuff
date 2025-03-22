@@ -1,6 +1,7 @@
 import random
 
-def init_grille(x:int, y:int) -> list[list]:
+
+def init_grille(x: int, y: int) -> list[list]:
     """
     Initialise une grille de taille x * y.
     Chaque case est remplie aléatoirement avec un bombon (fonction random.randint() entre 0 et 3)
@@ -15,7 +16,10 @@ def init_grille(x:int, y:int) -> list[list]:
         grille.append(ligne)
     return grille
 
-def echanger_bonbon(grille:list[list], b1:tuple[int, int], b2:tuple[int, int]) -> None:
+
+def echanger_bonbon(
+    grille: list[list], b1: tuple[int, int], b2: tuple[int, int]
+) -> None:
     """
     Echange le bonbon b1 et b2 dans la grille.
     Entrées :
@@ -23,11 +27,16 @@ def echanger_bonbon(grille:list[list], b1:tuple[int, int], b2:tuple[int, int]) -
         - b1 : objet Tuple (x1, y1) représentant les coordonées du premier bonbon
         - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
     Sortie : None
-    """ 
-    grille[b1[0]][b1[1]], grille[b2[0]][b2[1]] = grille[b2[0]][b2[1]], grille[b1[0]][b1[1]]
-    
+    """
+    grille[b1[0]][b1[1]], grille[b2[0]][b2[1]] = (
+        grille[b2[0]][b2[1]],
+        grille[b1[0]][b1[1]],
+    )
 
-def retirer_bonbon(grille:list[list], b1:tuple[int,int], b2:tuple[int,int]) -> None:
+
+def retirer_bonbon(
+    grille: list[list], b1: tuple[int, int], b2: tuple[int, int]
+) -> None:
     """
     Retire les bonbons entre b1 et b2 en remplaçant leur valeurs par des -1.
     Entrées :
@@ -36,15 +45,17 @@ def retirer_bonbon(grille:list[list], b1:tuple[int,int], b2:tuple[int,int]) -> N
         - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
     Sortie : None
     """
-    if b1[0] == b2[0]: # Si les bonbons sont sur la même ligne
+    if b1[0] == b2[0]:  # Si les bonbons sont sur la même ligne
         for i in range(min(b1[1], b2[1]), max(b1[1], b2[1]) + 1):
             grille[b1[0]][i] = -1
-    elif b1[1] == b2[1]: # Si les bonbons sont sur la même colonne
+    elif b1[1] == b2[1]:  # Si les bonbons sont sur la même colonne
         for i in range(min(b1[0], b2[0]), max(b1[0], b2[0]) + 1):
             grille[i][b1[1]] = -1
 
 
-def obtenir_bonbons_ligne_dessus(b1:tuple[int,int], b2:tuple[int, int]) -> list[list]:
+def obtenir_bonbons_ligne_dessus(
+    b1: tuple[int, int], b2: tuple[int, int]
+) -> list[list]:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
     Entrées :
@@ -56,10 +67,11 @@ def obtenir_bonbons_ligne_dessus(b1:tuple[int,int], b2:tuple[int, int]) -> list[
     bonbon_dessus = []
     i = 0
     while b1[0] - i >= 0:
-        bonbon_dessus.append([(b1[0] - i, b1[1]),
-                              (b1[0] - i, b1[1]-1), 
-                              (b2[0] - i, b2[1])])
+        bonbon_dessus.append(
+            [(b1[0] - i, b1[1]), (b1[0] - i, b1[1] - 1), (b2[0] - i, b2[1])]
+        )
         i += 1
     return bonbon_dessus
 
-obtenir_bonbons_ligne_dessus((1,3), (3,3))
+
+obtenir_bonbons_ligne_dessus((1, 3), (3, 3))

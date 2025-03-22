@@ -102,7 +102,7 @@ while not gagne and not perdu:
         for j in range(len(jeu_visible)):
             if jeu_visible[i][j] == -1:
                 compteur -= 1
-    if compteur == taille_jeu ** 2 - nb_bombes:
+    if compteur == taille_jeu**2 - nb_bombes:
         gagne = True
 
 if perdu:

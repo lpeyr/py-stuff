@@ -174,12 +174,12 @@ def jeu_gagne(jeu_visible, nb_bombes):
         - True si le jeu est gagné, False sinon
     """
     taille_jeu = len(jeu_visible)
-    compteur = taille_jeu ** 2
+    compteur = taille_jeu**2
     for i in range(taille_jeu):
         for j in range(taille_jeu):
             if jeu_visible[i][j] == -1:
                 compteur -= 1
-    return compteur == taille_jeu ** 2 - nb_bombes
+    return compteur == taille_jeu**2 - nb_bombes
 
 
 def jeu_perdu(jeu, x, y):
