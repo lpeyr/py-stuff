@@ -16,9 +16,10 @@
 "py-stuff" is repo with various code snippets. These are personnal snipets and/or programs I've written for school or other projects.
 
 ## Structure
+
 - Scripts : useful scripts/code snippets
 - NSI : Highschool NSI speciality projects
-- INSA : INSA Lyon school projects/homework 
+- INSA : INSA Lyon school projects/homework
 
 ## License
 
