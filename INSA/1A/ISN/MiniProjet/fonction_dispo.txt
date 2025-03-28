@@ -1,0 +1,24 @@
+
+
+init_grille
+
+echanger_bonbon
+
+retirer_bonbon
+
+obtenir_bonbon_ligne_dessus
+
+decaler_bonbon
+
+inserer_bonbons
+
+demander_utilisateur_bonbons
+
+combinaison_possible <-
+
+detecte_coordonnees_combinaison
+
+affichage_grille
+
+test_detecte_coordonnees_combinaison
+

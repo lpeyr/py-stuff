@@ -4,16 +4,25 @@ import random
 def init_grille(x: int, y: int) -> list[list]:
     """
     Initialise une grille de taille x * y.
-    Chaque case est remplie aléatoirement avec un bombon (fonction random.randint() entre 0 et 3)
+    Chaque case est remplie aléatoirement avec un bonbon (fonction random.randint() entre 0 et 3),
+    en s'assurant qu'il n'y a pas de combinaison possible (pas 3 mêmes nombres en ligne ou en colonne).
     Sortie :
-        - grille : une liste 2D avec des valeurs aléatoires.
+        - grille : une liste 2D avec des valeurs aléatoires sans combinaison possible.
     """
-    grille = []
+    grille = [[-1 for _ in range(y)] for _ in range(x)]
+
     for i in range(x):
-        ligne = []
         for j in range(y):
-            ligne.append(random.randint(0, 3))
-        grille.append(ligne)
+            possible_values = {0, 1, 2, 3}
+            # Exclure les valeurs qui formeraient une combinaison en ligne
+            if j >= 2 and grille[i][j - 1] == grille[i][j - 2]:
+                possible_values.discard(grille[i][j - 1])
+            # Exclure les valeurs qui formeraient une combinaison en colonne
+            if i >= 2 and grille[i - 1][j] == grille[i - 2][j]:
+                possible_values.discard(grille[i - 1][j])
+            # Choisir une valeur aléatoire parmi les valeurs possibles restantes
+            grille[i][j] = random.choice(list(possible_values))
+
     return grille
 
 
