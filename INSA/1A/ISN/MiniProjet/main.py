@@ -229,30 +229,27 @@ def test_detecte_coordonnees_combinaison():
 
 # Programme principal
 def __main__():
-    grille = init_grille(5, 5)
+    grille = init_grille(5,5) # Création d'une grille 5x5
+
+    affichage_grille(grille)
+
+    # Démarage du Jeu
 
     while combinaison_possible(grille):
 
-        (b1, b2) = demander_utilisateur_bonbons()
+        b1, b2 = demander_utilisateur_bonbons(grille)
 
-        echanger_bonbon(grille, b1, b2)
-        combinaison = detecte_coordonnees_combinaison(grille, b1)
+        echanger_bonbon(grille, b1, b2) 
 
-        while len(combinaison) != 0:  # Tant qu'il y a des combinaisons
-            retirer_bonbon(
-                grille, combinaison[0],
-                combinaison[-1])  # On retire les bonbons de la combinaison
-            descendre_bonbons(
-                grille, combinaison[0], combinaison[-1]
-            )  # On décale les bonbons au dessus de la combinaison supprimée vers le bas
-            inserer_bonbons(
-                grille, (0, combinaison[0][1]),
-                (0, combinaison[-1][1]
-                 ))  # On insère des bonbons aléatoires en haut de la grille
-            affichage_grille(grille, 4)  # On affiche la grille
-            combinaison = detecte_coordonnees_combinaison(
-                grille, b1)  # On vérifie si il y a d'autres combinaisons
-            if len(combinaison) == 0:  # Si il n'y a plus de combinaisons
-                combinaison = detecte_coordonnees_combinaison(
-                    grille, b2
-                )  # On vérifie si il y a d'autres combinaisons avec le deuxième bonbon
+        # On recupère les combinaisons possible du b1 et du b2 -> cette liste de
+        combinaison_b1 = detecte_coordonnees_combinaison(grille, b1) 
+        combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
+
+
+        combinaison_b1_b2 = combinaison_b1 + combinaison_b2
+        if combinaison_b1_b2 != [] : # s'il y a des combinaisons
+            for bonbon in combinaison_b1_b2 :
+                grille[bonbon[0]][bonbon[1]] = -1 # on retire les bonbons qui font partie de la combinaison
+            
+            descendre_bonbons(grille)
+            inserer_bonbons(grille) # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
