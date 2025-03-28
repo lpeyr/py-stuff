@@ -82,11 +82,30 @@ def decaler_bonbon(grille, b1, b2):
       - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
     Sortie : None
     """
-    
-    pass
+    ligne_min = min(b1[0], b2[0])
+    nb_colonnes = abs(b1[1] - b2[1])
+    colonne_min = min(b1[1], b2[1])
+    if ligne_min > 0:
+        for i in range(colonne_min, nb_colonnes + 1):
+            nb_decalages = 0
+            while grille[ligne_min][i] == -1:
+                decaler_bonbon(grille, (0 + nb_decalages, i),
+                               (ligne_min - 1, i))
+                nb_decalages += 1
+            i_remplissage = 0
+            while grille[i_remplissage][i] == -1:
+                grille[i_remplissage][i] = random.randint(0, 3)
+                i_remplissage += 1
+    else:
+        for i in range(colonne_min, nb_colonnes + 1):
+            grille[ligne_min][i] = random.randint(0, 3)
+
+    # PAS ENCORE TESTE MAIS DEVRAIT FONCTIONNER
 
 
 def inserer_bonbons(grille, b1, b2):
+    # A MODIFIER POUR LE NIVEAU 3, LISTE DE BONBONS A DONNER AU LIEU DE 2
+    # POUR L'INSTANT ON PART DU PRINCIPE QUE LES BONBONS SONT TOUS DE LA MÊME LIGNE OU COLONNE
     """
     Insère des bonbons générés aléatoirements entre les coordonnées b1 et b2
     Entrées :
@@ -95,7 +114,15 @@ def inserer_bonbons(grille, b1, b2):
         - b2 : objet Tuple (x2, y2) représentant les coordonées du second bonbon
     Sortie : None
     """
-    pass
+    if b1[1] == b2[1]:  # Si les bonbons sont sur la même colonne
+        ligne_min = min(b1[0], b2[0])
+        ligne_max = max(b1[0], b2[0])
+        for i in range(ligne_min, ligne_max + 1):
+            grille[i][b1[1]] = random.randint(0, 3)
+    else:
+        colonne_min = min(b1[1], b2[1])
+        colonne_max = max(b1[1], b2[1])
+        
 
 
 def demander_utilisateur_bonbons():
@@ -115,7 +142,54 @@ def combinaison_possible(grille):
     """
     Renvoie True si des combinaisons sont possibles.
     """
-    return True
+    # Pour chercher des combinaisons en ligne
+    nb_bonbons = [0, 0, 0, 0]
+    combinaison = False
+    i = 0
+    while i < len(grille) and not combinaison:
+        # Pour chaque colonne
+        j = 0
+        comb = grille[i][j]
+        compteur = 1
+        while j < len(grille[i]) - 1 and compteur < 3 and not combinaison:
+            if grille[i][j + 1] == comb:
+                compteur += 1
+                nb_bonbons[int(grille[i][j + 1])] += 1
+            else:
+                comb = grille[i][j + 1]
+                compteur = 1
+            j += 1
+            if compteur >= 2:
+                combinaison = True
+        i += 1
+        for b in nb_bonbons:
+            if b >= 3:
+                combinaison = True
+        nb_bonbons = [0, 0, 0, 0]
+
+    # Pour chercher des combinaisons en colonne
+    i = 0
+    while i < len(grille) and not combinaison:
+        # Pour chaque colonne
+        j = 0
+        comb = grille[j][i]
+        compteur = 1
+        while j < len(grille[i]) - 1 and compteur < 3 and not combinaison:
+            if grille[j + 1][i] == comb:
+                compteur += 1
+                nb_bonbons[int(grille[j + 1][i])] += 1
+            else:
+                comb = grille[j + 1][i]
+                compteur = 1
+            j += 1
+            if compteur >= 2:
+                combinaison = True
+        i += 1
+        for b in nb_bonbons:
+            if b >= 3:
+                combinaison = True
+        nb_bonbons = [0, 0, 0, 0]
+    return combinaison
 
 
 def detecte_coordonnees_combinaison(grille, bonbon, max=3):
