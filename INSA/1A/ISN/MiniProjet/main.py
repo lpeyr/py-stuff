@@ -82,7 +82,7 @@ def obtenir_bonbons_ligne_dessus(b1: tuple[int, int],
 obtenir_bonbons_ligne_dessus((1, 3), (3, 3))
 
 
-def decaler_bonbon(grille, b1, b2):
+def descendre_bonbons(grille, b1, b2):
     """
     Décale les bonbons entre b1 et b2 qui sont situés au-dessus de la ligne _ligne_. Cette fonction est appelée après avoir supprimé les bonbons entre b1 et b2. Pour chaque ligne de 0 à ligne-1, la fonction prend les bonbons de la ligne entre les coordonnées pertinentes et les décalent vers le bas.
     Entrées :
@@ -98,8 +98,8 @@ def decaler_bonbon(grille, b1, b2):
         for i in range(colonne_min, nb_colonnes + 1):
             nb_decalages = 0
             while grille[ligne_min][i] == -1:
-                decaler_bonbon(grille, (0 + nb_decalages, i),
-                               (ligne_min - 1, i))
+                descendre_bonbons(grille, (0 + nb_decalages, i),
+                                  (ligne_min - 1, i))
                 nb_decalages += 1
             i_remplissage = 0
             while grille[i_remplissage][i] == -1:
@@ -250,7 +250,7 @@ def __main__():
             retirer_bonbon(
                 grille, combinaison[0],
                 combinaison[-1])  # On retire les bonbons de la combinaison
-            decaler_bonbon(
+            descendre_bonbons(
                 grille, combinaison[0], combinaison[-1]
             )  # On décale les bonbons au dessus de la combinaison supprimée vers le bas
             inserer_bonbons(
