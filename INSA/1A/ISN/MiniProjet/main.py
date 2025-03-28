@@ -133,7 +133,6 @@ def inserer_bonbons(grille, b1, b2):
         colonne_max = max(b1[1], b2[1])
         for i in range(colonne_min, colonne_max + 1):
             grille[b1[0]][i] = random.randint(0, 3)
-    
 
 
 def demander_utilisateur_bonbons():
@@ -149,7 +148,7 @@ def demander_utilisateur_bonbons():
     return b1, b2
 
 
-def combinaison_possible(grille):
+def combinaison_possible(grille, max=3):
     """
     Renvoie True si des combinaisons sont possibles.
     """
@@ -162,7 +161,7 @@ def combinaison_possible(grille):
         j = 0
         comb = grille[i][j]
         compteur = 1
-        while j < len(grille[i]) - 1 and compteur < 3 and not combinaison:
+        while j < len(grille[i]) - 1 and compteur < max and not combinaison:
             if grille[i][j + 1] == comb:
                 compteur += 1
                 nb_bonbons[int(grille[i][j + 1])] += 1
@@ -170,12 +169,14 @@ def combinaison_possible(grille):
                 comb = grille[i][j + 1]
                 compteur = 1
             j += 1
-            if compteur >= 2:
+            if compteur >= max - 1:
                 combinaison = True
         i += 1
         for b in nb_bonbons:
-            if b >= 3:
+            if b >= max and compteur >= max - 1:
                 combinaison = True
+            else:
+                combinaison = False
         nb_bonbons = [0, 0, 0, 0]
 
     # Pour chercher des combinaisons en colonne
@@ -185,7 +186,7 @@ def combinaison_possible(grille):
         j = 0
         comb = grille[j][i]
         compteur = 1
-        while j < len(grille[i]) - 1 and compteur < 3 and not combinaison:
+        while j < len(grille[i]) - 1 and compteur < max and not combinaison:
             if grille[j + 1][i] == comb:
                 compteur += 1
                 nb_bonbons[int(grille[j + 1][i])] += 1
@@ -193,11 +194,11 @@ def combinaison_possible(grille):
                 comb = grille[j + 1][i]
                 compteur = 1
             j += 1
-            if compteur >= 2:
+            if compteur >= max - 1:
                 combinaison = True
         i += 1
         for b in nb_bonbons:
-            if b >= 3:
+            if b >= max:
                 combinaison = True
         nb_bonbons = [0, 0, 0, 0]
     return combinaison
@@ -224,6 +225,19 @@ def detecte_coordonnees_combinaison(grille, bonbon, max=3):
       - max : Valeur de la taille maximale de la combinaison (ex: 3 en ligne et 3 en colonne)
     Sortie : Une liste de bonbons list[Tuple(x,y)] qui contient les coordonnées des bonbons de la combinaison
     """
+    combinaison = []
+    if bonbon[0] == bonbon[1]:  # Si les bonbons sont sur la même ligne
+        i = 0
+        while i < len(grille) and combinaison == []:
+            # Pour chaque colonne
+            j = 0
+            comb = grille[bonbon[0]][i]
+            compteur = 1
+            while j < len(
+                    grille[i]) - 1 and compteur < max and combinaison == []:
+                if grille[bonbon[0]][i + 1] == comb:
+                    compteur += 1
+                    combinaison.append((bonbon[0], i))
 
 
 # import matplotlib.pyplot as plt
@@ -232,7 +246,6 @@ def affichage_grille(grille, nb_type_bonbons):
     Affiche la grille de jeu "grille" contenant au
     maximum "nb_type_bonbons" couleurs de bonbons différentes.
     """
-    pass
 
 
 def test_detecte_coordonnees_combinaison():

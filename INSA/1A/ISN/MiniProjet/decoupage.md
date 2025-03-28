@@ -3,10 +3,10 @@
 ## Types de bonbons
 
 - -1 : Case vide (ne sera pas utilisée dans le jeu final)
-- 0 : Rouge
-- 1 : Bleu
-- 2 : Vert
-- 3 : Jaune
+- 0 : 🍭
+- 1 : 🍡
+- 2 : 🍬
+- 3 : 🍫
 
 ## Fonctions
 
