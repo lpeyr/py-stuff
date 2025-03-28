@@ -5,8 +5,8 @@
 - -1 : Case vide (ne sera pas utilisée dans le jeu final)
 - 0 : 🍭
 - 1 : 🍡
-- 2 : 🍬
-- 3 : 🍫
+- 2 : 🍫
+- 3 : 🍦
 
 ## Fonctions
 
