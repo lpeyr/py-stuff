@@ -13,13 +13,13 @@ def init_grille(x: int, y: int) -> list[list]:
 
     for i in range(x):
         for j in range(y):
-            possible_values = {0, 1, 2, 3}
+            possible_values = [0, 1, 2, 3]
             # Exclure les valeurs qui formeraient une combinaison en ligne
             if j >= 2 and grille[i][j - 1] == grille[i][j - 2]:
-                possible_values.discard(grille[i][j - 1])
+                possible_values.remove(grille[i][j - 1])
             # Exclure les valeurs qui formeraient une combinaison en colonne
             if i >= 2 and grille[i - 1][j] == grille[i - 2][j]:
-                possible_values.discard(grille[i - 1][j])
+                possible_values.remove(grille[i - 1][j])
             # Choisir une valeur aléatoire parmi les valeurs possibles restantes
             grille[i][j] = random.choice(list(possible_values))
 
