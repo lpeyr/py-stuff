@@ -122,7 +122,9 @@ def inserer_bonbons(grille, b1, b2):
     else:
         colonne_min = min(b1[1], b2[1])
         colonne_max = max(b1[1], b2[1])
-        
+        for i in range(colonne_min, colonne_max + 1):
+            grille[b1[0]][i] = random.randint(0, 3)
+    
 
 
 def demander_utilisateur_bonbons():
