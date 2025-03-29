@@ -1,7 +1,10 @@
 import random
 
+candy = tuple[int, int]
+grid = list[list]
 
-def init_grille(x: int, y: int) -> list[list]:
+
+def init_grille(x: int, y: int) -> grid:
     """
     Initialise une grille de taille x * y.
     Chaque case est remplie aléatoirement avec un bonbon (fonction random.randint() entre 0 et 3),
@@ -26,9 +29,7 @@ def init_grille(x: int, y: int) -> list[list]:
     return grille
 
 
-def echanger_bonbon(
-    grille: list[list], b1: tuple[int, int], b2: tuple[int, int]
-) -> None:
+def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
     """
     Echange le bonbon b1 et b2 dans la grille.
     Entrées :
@@ -43,9 +44,7 @@ def echanger_bonbon(
     )
 
 
-def retirer_bonbon(
-    grille: list[list], b1: tuple[int, int], b2: tuple[int, int]
-) -> None:
+def retirer_bonbon(grille: grid, b1: candy, b2: candy) -> None:
     """
     Retire les bonbons entre b1 et b2 en remplaçant leur valeurs par des -1.
     Entrées :
@@ -62,9 +61,7 @@ def retirer_bonbon(
             grille[i][b1[1]] = -1
 
 
-def obtenir_bonbons_ligne_dessus(
-    b1: tuple[int, int], b2: tuple[int, int]
-) -> list[list]:
+def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
     Entrées :
@@ -86,7 +83,7 @@ def obtenir_bonbons_ligne_dessus(
 obtenir_bonbons_ligne_dessus((1, 3), (3, 3))
 
 
-def descendre_bonbons(grille, b1, b2):
+def descendre_bonbons(grille: grid, b1: candy, b2: candy):
     """
     Décale les bonbons entre b1 et b2 qui sont situés au-dessus de la ligne _ligne_. Cette fonction est appelée après avoir supprimé les bonbons entre b1 et b2. Pour chaque ligne de 0 à ligne-1, la fonction prend les bonbons de la ligne entre les coordonnées pertinentes et les décalent vers le bas.
     Entrées :
@@ -107,7 +104,7 @@ def descendre_bonbons(grille, b1, b2):
                     index -= 1
 
 
-def inserer_bonbons(grille, b1, b2):
+def inserer_bonbons(grille: grid, b1: candy, b2: candy):
     # A MODIFIER POUR LE NIVEAU 3, LISTE DE BONBONS A DONNER AU LIEU DE 2
     # POUR L'INSTANT ON PART DU PRINCIPE QUE LES BONBONS SONT TOUS DE LA MÊME LIGNE OU COLONNE
     """
@@ -131,8 +128,8 @@ def inserer_bonbons(grille, b1, b2):
 
 
 def demander_utilisateur_bonbons(
-    grille: list[list],
-) -> tuple[tuple[int, int], tuple[int, int]]:
+    grille: grid,
+) -> tuple[candy, candy]:
     """
     Demander à l'utilisateur les deux bonbons qu'il souhaite échanger ; il faut soit que x1 = x2 ou y1 = y2.
     Retourne les coordonnées deux deux bonbons Tuple(Tuple(x1, y1), Tuple(x2, y2)
@@ -167,7 +164,7 @@ def demander_utilisateur_bonbons(
     return ((b1[0], b1[1]), (b2[0], b2[1]))
 
 
-def detecte_coordonnees_combinaison(grille, bonbon, max=3):
+def detecte_coordonnees_combinaison(grille: grid, bonbon: candy, max=3):
     """
     Vérifie si les bonbons sur la ligne ou la colonne du bonbon forment une combinaison. On utilisera une boucle while.
     Exemple d'Algorithme pour les lignes :
@@ -225,7 +222,7 @@ def detecte_coordonnees_combinaison(grille, bonbon, max=3):
     return combi
 
 
-def combinaison_possible(grille, max=3):
+def combinaison_possible(grille: grid, max=3):
     """
     Renvoie True si des combinaisons sont possibles. Utilise une boucle while pour parcourir la grille.
     Entrées :
@@ -250,7 +247,7 @@ def combinaison_possible(grille, max=3):
 
 
 # import matplotlib.pyplot as plt
-def affichage_grille(grille):
+def affichage_grille(grille: grid):
     """
     Affiche la grille de jeu.
     Entrées :
