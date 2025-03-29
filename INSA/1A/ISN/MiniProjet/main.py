@@ -272,7 +272,18 @@ def test_detecte_coordonnees_combinaison():
     Pour chaque cas de test, affiche True si le test passe,
     False sinon
     """
-    pass
+    grille = [
+        [0, 1, 2, 3, 0],
+        [1, 1, 2, 3, 0],
+        [0, 1, 2, 3, 0],
+        [1, 1, 2, 3, 0],
+        [0, 1, 2, 3, 0],
+    ]
+    print(detecte_coordonnees_combinaison(grille, (1, 1), max=3))  # True
+    print(detecte_coordonnees_combinaison(grille, (2, 2), max=3))  # True
+    print(detecte_coordonnees_combinaison(grille, (4, 4), max=3))  # False
+    print(detecte_coordonnees_combinaison(grille, (0, 0), max=3))  # False
+    print(detecte_coordonnees_combinaison(grille, (1, 0), max=3))  # True
 
 
 # Programme principal
