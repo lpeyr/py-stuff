@@ -21,7 +21,11 @@ def init_grille(x: int, y: int) -> grid:
             if j >= 2 and grille[i][j - 1] == grille[i][j - 2]:
                 possible_values.remove(grille[i][j - 1])
             # Exclure les valeurs qui formeraient une combinaison en colonne
-            if i >= 2 and grille[i - 1][j] == grille[i - 2][j]:
+            if (
+                i >= 2
+                and grille[i - 1][j] == grille[i - 2][j]
+                and grille[i - 1][j] in possible_values
+            ):
                 possible_values.remove(grille[i - 1][j])
             # Choisir une valeur aléatoire parmi les valeurs possibles restantes
             grille[i][j] = random.choice(list(possible_values))
