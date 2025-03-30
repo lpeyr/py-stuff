@@ -83,13 +83,13 @@ def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
 obtenir_bonbons_ligne_dessus((1, 3), (3, 3))
 
 
-def descendre_bonbons(grille: grid, b1: candy, b2: candy):
+def descendre_bonbons(grille: grid):
     """
-    Décale les bonbons entre b1 et b2 qui sont situés au-dessus de la ligne _ligne_. Cette fonction est appelée après avoir supprimé les bonbons entre b1 et b2. Pour chaque ligne de 0 à ligne-1, la fonction prend les bonbons de la ligne entre les coordonnées pertinentes et les décalent vers le bas.
+    Décale les bonbons qui sont situés au-dessus de cases vides.
+    Cette fonction est appelée après avoir supprimé les bonbons entre b1 et b2.
+    Pour chaque ligne de 0 à ligne-1, la fonction prend les bonbons de la ligne entre les coordonnées pertinentes et les décalent vers le bas.
     Entrées :
       - grille : la grille du jeu
-      - b1 : objet Tuple (x1, y1) représentant les coordonnées du premier bonbon
-      - b2 : objet Tuple (x2, y2) représentant les coordonnées du second bonbon
     Sortie : None
     """
     for i in range(len(grille[0])):
@@ -254,7 +254,7 @@ def affichage_grille(grille: grid):
         - grille : la grille du jeu
     Sortie : None
     """
-    bonbons = ["🍭", "🍡", "🍫", "🍦"]
+    bonbons = ["🍭", "🍡", "🍫", "🍦", "  "]
     print("╔" + "═" * (3 * len(grille[0]) - 1) + "╗")
     for i in range(len(grille)):
         print("║", end="")
@@ -273,17 +273,17 @@ def test_detecte_coordonnees_combinaison():
     False sinon
     """
     grille = [
-        [0, 1, 2, 3, 0],
+        [0, 1, 3, 3, 0],
+        [1, 1, 2, 3, 2],
+        [0, 0, 2, 0, 1],
         [1, 1, 2, 3, 0],
-        [0, 1, 2, 3, 0],
-        [1, 1, 2, 3, 0],
-        [0, 1, 2, 3, 0],
+        [0, 1, 0, 3, 0],
     ]
-    print(detecte_coordonnees_combinaison(grille, (1, 1), max=3))  # True
-    print(detecte_coordonnees_combinaison(grille, (2, 2), max=3))  # True
-    print(detecte_coordonnees_combinaison(grille, (4, 4), max=3))  # False
-    print(detecte_coordonnees_combinaison(grille, (0, 0), max=3))  # False
-    print(detecte_coordonnees_combinaison(grille, (1, 0), max=3))  # True
+    print(detecte_coordonnees_combinaison(grille, (1, 1)))  # False
+    print(detecte_coordonnees_combinaison(grille, (2, 2)))  # True
+    print(detecte_coordonnees_combinaison(grille, (4, 4)))  # False
+    print(detecte_coordonnees_combinaison(grille, (0, 0)))  # False
+    print(detecte_coordonnees_combinaison(grille, (1, 0)))  # False
 
 
 # Programme principal
@@ -299,6 +299,7 @@ def main():
         b1, b2 = demander_utilisateur_bonbons(grille)
 
         echanger_bonbon(grille, b1, b2)
+        affichage_grille(grille)
 
         # On recupère les combinaisons possible du b1 et du b2 -> cette liste de
         combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
@@ -310,11 +311,14 @@ def main():
                 grille[bonbon[0]][
                     bonbon[1]
                 ] = -1  # on retire les bonbons qui font partie de la combinaison
-
+            affichage_grille(grille)
             descendre_bonbons(grille)
             inserer_bonbons(
-                grille
+                grille, b1, b2
             )  # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
+        affichage_grille(grille)
+
+    print("Il n'y a plus de combinaisons possibles !")
 
 
 if __name__ == "__main__":
