@@ -213,7 +213,7 @@ def detecte_coordonnees_combinaison(grille: grid, bonbon: candy, max=3):
     # En colonne
     i = 0
     compteur = 0
-    while i < len(grille[0]) and compteur < max:
+    while i < len(grille[0]) and compteur < max and len(combi) < max:
         if grille[i][bonbon[1]] == val:
             compteur += 1
             combi.append((i, bonbon[1]))
@@ -278,13 +278,13 @@ def test_detecte_coordonnees_combinaison():
     """
     grille = [
         [0, 1, 3, 3, 0],
-        [1, 1, 2, 3, 2],
+        [1, 1, 1, 3, 2],
         [0, 0, 2, 0, 1],
         [1, 1, 2, 3, 0],
         [0, 1, 0, 3, 0],
     ]
-    print(detecte_coordonnees_combinaison(grille, (1, 1)))  # False
-    print(detecte_coordonnees_combinaison(grille, (2, 2)))  # True
+    print(detecte_coordonnees_combinaison(grille, (1, 1)))  # True
+    print(detecte_coordonnees_combinaison(grille, (2, 2)))  # False
     print(detecte_coordonnees_combinaison(grille, (4, 4)))  # False
     print(detecte_coordonnees_combinaison(grille, (0, 0)))  # False
     print(detecte_coordonnees_combinaison(grille, (1, 0)))  # False
