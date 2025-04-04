@@ -288,7 +288,14 @@ def test_detecte_coordonnees_combinaison():
     print(detecte_coordonnees_combinaison(grille, (1, 0)))  # False
 
 
-def etendre_combinaison(grille, combinaison):
+def etendre_combinaison(grille: grid, combinaison):
+    """
+    Etend une combinaison en ligne ou en colonne.
+    Entrées :
+        - grille : la grille du jeu
+        - combinaison : une liste de bonbons list[Tuple(x,y)]
+    Sortie : La cominaison étendue list[Tuple(x,y)]
+    """
     deja_explores = []
     a_explorer = [combinaison[0]]
     while len(a_explorer) != 0:
@@ -301,7 +308,7 @@ def etendre_combinaison(grille, combinaison):
             for j in range(-1, 2):
                 if actuel[0] + i >= 0 and actuel[1] + j >= 0 and actuel[
                         0] + i < len(grille) and actuel[1] + j < len(
-                            grille[0]) and i != j:
+                            grille[0]) and abs(i) != abs(j):
                     if grille[actuel[0] + i][actuel[1] + j] == grille[
                             combinaison[0][0]][combinaison[0][1]]:
                         if [actuel[0] + i, actuel[1] + j] not in combinaison:
@@ -327,9 +334,14 @@ def main():
         affichage_grille(grille)
 
         # On recupère les combinaisons possible du b1 et du b2 -> cette liste de
-        combinaison_b1 = etendre_combinaison(grille, detecte_coordonnees_combinaison(grille, b1))
-        combinaison_b2 = etendre_combinaison(grille, detecte_coordonnees_combinaison(grille, b2))
+        combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
+        combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
 
+        if len(combinaison_b1) != 0:
+            combinaison_b1 = etendre_combinaison(grille, combinaison_b1)
+        if len(combinaison_b2) != 0:
+            combinaison_b2 = etendre_combinaison(grille, combinaison_b2)
+        
         combinaison_b1_b2 = enlever_doublons(
             combinaison_b1, combinaison_b2)  # enlever doublons
 
@@ -346,9 +358,14 @@ def main():
             )  # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
 
             combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
+            if len(combinaison_b1) != 0:
+                combinaison_b1 = etendre_combinaison(grille, combinaison_b1)
             combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
+            if len(combinaison_b2) != 0:
+                combinaison_b2 = etendre_combinaison(grille, combinaison_b2)
             combinaison_b1_b2 = enlever_doublons(combinaison_b1,
                                                  combinaison_b2)
+            
         affichage_grille(grille)
 
     print("Il n'y a plus de combinaisons possibles !")
