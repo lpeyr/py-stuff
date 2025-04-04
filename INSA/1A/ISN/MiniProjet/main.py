@@ -86,9 +86,9 @@ def descendre_bonbons(grille: grid):
             if grille[j][i] == -1:
                 index = j
                 while index > 0:
-                    grille[i][index], grille[i][index - 1] = (
-                        grille[i][index - 1],
-                        grille[i][index],
+                    grille[index][i], grille[index - 1][i] = (
+                        grille[index - 1][i],
+                        grille[index][i],
                     )
                     index -= 1
 
@@ -147,12 +147,17 @@ def demander_utilisateur_bonbons(
         b2[0] = int(input("Entrez les coordonnées du second bonbon (x2) : "))
         b2[1] = int(input("Entrez les coordonnées du second bonbon (y2) : "))
 
-        # Vérifier si les bonbons sont sur la même ligne ou colonne
+        # Vérifier si les bonbons sont voisins sur la même ligne ou colonne
         # Si les coordonnées ne sont pas valides, on les remet à (-1, -1)
-        if not (b1[0] == b2[0] or b1[1] == b2[1]):
-            print("Les bonbons doivent être sur la même ligne ou colonne.")
+        if (
+            abs(b1[0] - b2[0]) > 1
+            or abs(b1[1] - b2[1]) > 1
+            or (b1[0] != b2[0] and b1[1] != b2[1])
+        ):
             b1 = [-1, -1]
             b2 = [-1, -1]
+            print("Les bonbons doivent être voisins sur la même ligne ou colonne.")
+
     return ((b1[0], b1[1]), (b2[0], b2[1]))
 
 
@@ -257,6 +262,18 @@ def affichage_grille(grille: grid):
         print("║")
     print("╚" + "═" * (3 * len(grille[0]) - 1) + "╝")
 
+def enlever_doublons(liste1,liste2):
+    """
+    Enlève les doublons de la liste liste1 dans liste2
+    """
+    resultat = []
+    for i in range(len(liste1)):
+        if liste1[i] not in liste2 :
+            resultat.append(liste1[i])
+    for j in range(len(liste2)):
+        if liste2[j] not in liste1 :
+            resultat.append(liste2[j])
+    return resultat
 
 def test_detecte_coordonnees_combinaison():
     """
@@ -297,8 +314,9 @@ def main():
         combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
         combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
 
-        combinaison_b1_b2 = combinaison_b1 + combinaison_b2
-        if combinaison_b1_b2 != []:  # s'il y a des combinaisons
+        combinaison_b1_b2 = enlever_doublons(combinaison_b1, combinaison_b2)  # enlever doublons
+
+        while combinaison_b1_b2 != []:  # tant que la liste des combinaisons possibles
             for bonbon in combinaison_b1_b2:
                 grille[bonbon[0]][
                     bonbon[1]
@@ -306,10 +324,13 @@ def main():
             affichage_grille(grille)
             descendre_bonbons(grille)
             inserer_bonbons(grille)  # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
+            
+            combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
+            combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
+            combinaison_b1_b2 = enlever_doublons(combinaison_b1, combinaison_b2)
         affichage_grille(grille)
 
     print("Il n'y a plus de combinaisons possibles !")
-
 
 if __name__ == "__main__":
     main()
