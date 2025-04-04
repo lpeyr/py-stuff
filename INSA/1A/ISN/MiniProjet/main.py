@@ -14,22 +14,7 @@ def init_grille(x: int, y: int) -> grid:
     """
     grille = [[-1 for _ in range(y)] for _ in range(x)]
 
-    for i in range(x):
-        for j in range(y):
-            possible_values = [0, 1, 2, 3]
-            # Exclure les valeurs qui formeraient une combinaison en ligne
-            if j >= 2 and grille[i][j - 1] == grille[i][j - 2]:
-                possible_values.remove(grille[i][j - 1])
-            # Exclure les valeurs qui formeraient une combinaison en colonne
-            if (
-                i >= 2
-                and grille[i - 1][j] == grille[i - 2][j]
-                and grille[i - 1][j] in possible_values
-            ):
-                possible_values.remove(grille[i - 1][j])
-            # Choisir une valeur aléatoire parmi les valeurs possibles restantes
-            grille[i][j] = random.choice(list(possible_values))
-
+    inserer_bonbons(grille)
     return grille
 
 
@@ -108,27 +93,30 @@ def descendre_bonbons(grille: grid):
                     index -= 1
 
 
-def inserer_bonbons(grille: grid, b1: candy, b2: candy):
+def inserer_bonbons(grille: grid):
     # A MODIFIER POUR LE NIVEAU 3, LISTE DE BONBONS A DONNER AU LIEU DE 2
     # POUR L'INSTANT ON PART DU PRINCIPE QUE LES BONBONS SONT TOUS DE LA MÊME LIGNE OU COLONNE
     """
     Insère des bonbons générés aléatoirements entre les coordonnées b1 et b2
     Entrées :
         - grille : la grille du jeu
-        - b1 : objet Tuple (x1, y1) représentant les coordonnées du premier bonbon
-        - b2 : objet Tuple (x2, y2) représentant les coordonnées du second bonbon
     Sortie : None
     """
-    if b1[1] == b2[1]:  # Si les bonbons sont sur la même colonne
-        ligne_min = min(b1[0], b2[0])
-        ligne_max = max(b1[0], b2[0])
-        for i in range(ligne_min, ligne_max + 1):
-            grille[i][b1[1]] = random.randint(0, 3)
-    else:
-        colonne_min = min(b1[1], b2[1])
-        colonne_max = max(b1[1], b2[1])
-        for i in range(colonne_min, colonne_max + 1):
-            grille[b1[0]][i] = random.randint(0, 3)
+    for i in range(len(grille)):
+        for j in range(len(grille[0])):
+            if grille[i][j] == -1:
+                possible_values = [0, 1, 2, 3]
+                # Exclure les valeurs qui formeraient une combinaison en ligne
+                if j >= 2 and grille[i][j - 1] == grille[i][j - 2]:
+                    possible_values.remove(grille[i][j - 1])
+                # Exclure les valeurs qui formeraient une combinaison en colonne
+                if i >= 2 and grille[i - 1][j] == grille[i - 2][j] and grille[i - 1][j] in possible_values :
+                    possible_values.remove(grille[i - 1][j])
+                
+                # Choisir une valeur aléatoire parmi les valeurs possibles restantes
+                grille[i][j] = random.choice(possible_values)
+            
+
 
 
 def demander_utilisateur_bonbons(
@@ -317,9 +305,7 @@ def main():
                 ] = -1  # on retire les bonbons qui font partie de la combinaison
             affichage_grille(grille)
             descendre_bonbons(grille)
-            inserer_bonbons(
-                grille, b1, b2
-            )  # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
+            inserer_bonbons(grille)  # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
         affichage_grille(grille)
 
     print("Il n'y a plus de combinaisons possibles !")
