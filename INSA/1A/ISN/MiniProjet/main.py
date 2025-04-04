@@ -101,9 +101,9 @@ def descendre_bonbons(grille: grid):
             if grille[j][i] == -1:
                 index = j
                 while index > 0:
-                    grille[i][index], grille[i][index - 1] = (
-                        grille[i][index - 1],
-                        grille[i][index],
+                    grille[index][i], grille[index - 1][i] = (
+                        grille[index - 1][i],
+                        grille[index][i],
                     )
                     index -= 1
 
@@ -159,12 +159,17 @@ def demander_utilisateur_bonbons(
         b2[0] = int(input("Entrez les coordonnées du second bonbon (x2) : "))
         b2[1] = int(input("Entrez les coordonnées du second bonbon (y2) : "))
 
-        # Vérifier si les bonbons sont sur la même ligne ou colonne
+        # Vérifier si les bonbons sont voisins sur la même ligne ou colonne
         # Si les coordonnées ne sont pas valides, on les remet à (-1, -1)
-        if not (b1[0] == b2[0] or b1[1] == b2[1]):
-            print("Les bonbons doivent être sur la même ligne ou colonne.")
+        if (
+            abs(b1[0] - b2[0]) > 1
+            or abs(b1[1] - b2[1]) > 1
+            or (b1[0] != b2[0] and b1[1] != b2[1])
+        ):
             b1 = [-1, -1]
             b2 = [-1, -1]
+            print("Les bonbons doivent être voisins sur la même ligne ou colonne.")
+
     return ((b1[0], b1[1]), (b2[0], b2[1]))
 
 
@@ -309,7 +314,9 @@ def main():
         combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
         combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
 
-        combinaison_b1_b2 = combinaison_b1 + combinaison_b2
+        combinaison_b1_b2 = combinaison_b1 + combinaison_b2  # enlever doublons
+
+        
         if combinaison_b1_b2 != []:  # s'il y a des combinaisons
             for bonbon in combinaison_b1_b2:
                 grille[bonbon[0]][
