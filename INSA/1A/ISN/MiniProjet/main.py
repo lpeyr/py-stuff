@@ -141,11 +141,11 @@ def demander_utilisateur_bonbons(
         or b2[1] >= len(grille[0])
     ):
         # Demander à l'utilisateur de saisir les coordonnées des bonbons
-        b1[0] = int(input("Entrez les coordonnées du premier bonbon (x1) : "))
-        b1[1] = int(input("Entrez les coordonnées du premier bonbon (y1) : "))
+        b1[0] = int(input("Entrez la ligne du premier bonbon (x1) : "))
+        b1[1] = int(input("Entrez la colonne du premier bonbon (y1) : "))
 
-        b2[0] = int(input("Entrez les coordonnées du second bonbon (x2) : "))
-        b2[1] = int(input("Entrez les coordonnées du second bonbon (y2) : "))
+        b2[0] = int(input("Entrez les ligne du second bonbon (x2) : "))
+        b2[1] = int(input("Entrez les colonne du second bonbon (y2) : "))
 
         # Vérifier si les bonbons sont voisins sur la même ligne ou colonne
         # Si les coordonnées ne sont pas valides, on les remet à (-1, -1)
@@ -252,15 +252,17 @@ def affichage_grille(grille: grid):
     Sortie : None
     """
     bonbons = ["🍭", "🍡", "🍫", "🍦", "  "]
-    print("╔" + "═" * (3 * len(grille[0]) - 1) + "╗")
+    print(" ╔" + "═" * (3 * len(grille[0]) - 1) + "╗")
     for i in range(len(grille)):
-        print("║", end="")
+        #if i < 10:
+        #    print("0",end="")
+        print(str(i) + "║", end="")
         for j in range(len(grille[i])):
             print(bonbons[grille[i][j]], end="")
             if j != len(grille) - 1:
                 print("|", end="")
         print("║")
-    print("╚" + "═" * (3 * len(grille[0]) - 1) + "╝")
+    print(" ╚" + "═" * (3 * len(grille[0]) - 1) + "╝")
 
 def enlever_doublons(liste1,liste2):
     """
