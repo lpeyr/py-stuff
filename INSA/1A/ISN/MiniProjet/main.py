@@ -37,6 +37,8 @@ def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
         grille[b2[0]][b2[1]],
         grille[b1[0]][b1[1]],
     )
+
+
 def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
@@ -123,6 +125,7 @@ def demander_utilisateur_bonbons(
         or b2[0] >= len(grille)
         or b2[1] < 0
         or b2[1] >= len(grille[0])
+        or (b1[0] == b2[0] and b1[1] == b2[1])
     ):
         # Demander à l'utilisateur de saisir les coordonnées des bonbons
         b1[0] = int(input("Entrez la ligne du premier bonbon (x1) : "))
@@ -241,7 +244,7 @@ def affichage_grille(grille: grid):
     print()
     print(" ╔" + "═" * (3 * len(grille[0]) - 1) + "╗")
     for i in range(len(grille)):
-        
+
         print(str(i) + "║", end="")
         for j in range(len(grille[i])):
             print(bonbons[grille[i][j]], end="")
@@ -299,11 +302,9 @@ def etendre_combinaison(grille: grid, combinaison):
     deja_explores = []
     a_explorer = [combinaison[0]]
     while len(a_explorer) != 0:
-        # print(a_explorer)
         actuel = a_explorer[-1]
         a_explorer.pop(-1)
         deja_explores.append(actuel)
-        # print("dfsd",deja_explores)
         for i in range(-1, 2):
             for j in range(-1, 2):
                 if (
@@ -365,8 +366,9 @@ def trouver_combinaisons(grille: grid, b1: candy, b2: candy) -> list[candy]:
     )  # enlever doublons
     return combinaison_b1_b2
 
-# Systeme de points (pas très compliqué)
-def ajouter_points(combinaison:list[candy]) -> int:
+
+# Systeme de point
+def ajouter_points(combinaison: list[candy]) -> int:
     """
     Ajoute des points au joueur en fonction de la taille de la combinaison.
     Entrées :
@@ -380,10 +382,9 @@ def ajouter_points(combinaison:list[candy]) -> int:
 def effacer():
     """
     Efface la console.
-    Entrées : None
-    Sortie : None
     """
     os.system("cls" if os.name == "nt" else "clear")
+
 
 # Programme principal
 def main():
@@ -395,24 +396,25 @@ def main():
 
     # Démarage du Jeu
     while combinaison_possible(grille):
-        
+
         b1, b2 = demander_utilisateur_bonbons(grille)
 
         echanger_bonbon(grille, b1, b2)
 
+        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
 
-        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)   
-        
         coup = 0
         while combinaison_b1_b2 != []:  # tant que la liste des combinaisons possibles
-            
             for bonbon in combinaison_b1_b2:
                 grille[bonbon[0]][
                     bonbon[1]
                 ] = -1  # on retire les bonbons qui font partie de la combinaison
             descendre_bonbons(grille)
             # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
-            inserer_bonbons(grille) 
+            inserer_bonbons(grille)
+            points_joueur += ajouter_points(combinaison_b1_b2)
+
+            # On cherche de nouvelles combinaisons
             total_combinaisons = trouver_combinaisons_grille(grille)
             while len(total_combinaisons) != 0:
                 for combinaison in total_combinaisons:
@@ -420,21 +422,21 @@ def main():
                     coup += 1
                     for bonbon in combinaison:
                         grille[bonbon[0]][bonbon[1]] = -1
-                        
-            
+
                 descendre_bonbons(grille)
                 inserer_bonbons(grille)
-                
+
                 total_combinaisons = trouver_combinaisons_grille(grille)
 
             combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
         effacer()
         affichage_grille(grille)
-        print(f"Vous avez joué un coup ! \n Cela à produit {coup - 1 } combos")
+        print(f"Vous avez joué un coup ! \nCela a produit {coup} combos")
         print(f"Votre Score : {points_joueur} Points")
 
     print("Il n'y a plus de combinaisons possibles !")
     print(f"Votre Score Final : {points_joueur} Points")
+
 
 if __name__ == "__main__":
     main()
