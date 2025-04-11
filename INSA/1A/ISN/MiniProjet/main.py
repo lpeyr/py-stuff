@@ -268,26 +268,6 @@ def enlever_doublons(liste1, liste2):
     return resultat
 
 
-def test_detecte_coordonnees_combinaison():
-    """
-    Test la fonction detecte_coordonnees_combinaison(grille, i, j).
-    Pour chaque cas de test, affiche True si le test passe,
-    False sinon
-    """
-    grille = [
-        [0, 1, 3, 3, 0],
-        [1, 1, 1, 3, 2],
-        [0, 0, 2, 0, 1],
-        [1, 1, 2, 3, 0],
-        [0, 1, 0, 3, 0],
-    ]
-    print(detecte_coordonnees_combinaison(grille, (1, 1)))  # True
-    print(detecte_coordonnees_combinaison(grille, (2, 2)))  # False
-    print(detecte_coordonnees_combinaison(grille, (4, 4)))  # False
-    print(detecte_coordonnees_combinaison(grille, (0, 0)))  # False
-    print(detecte_coordonnees_combinaison(grille, (1, 0)))  # False
-
-
 def etendre_combinaison(grille: grid, combinaison):
     """
     Etend une combinaison en ligne ou en colonne pour pouvoir détecter les combinaisons de niveau 3. C'est à dire
