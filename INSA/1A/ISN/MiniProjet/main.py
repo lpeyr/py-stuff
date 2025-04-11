@@ -32,6 +32,10 @@ def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
         grille[b1[0]][b1[1]],
     )
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 62a007445bbd00a8456b5742bb6bf45920608bbc
 def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
@@ -49,9 +53,6 @@ def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
         )
         i += 1
     return bonbon_dessus
-
-
-obtenir_bonbons_ligne_dessus((1, 3), (3, 3))
 
 
 def descendre_bonbons(grille: grid):
@@ -227,7 +228,6 @@ def combinaison_possible(grille: grid, max=3):
     return possible
 
 
-# import matplotlib.pyplot as plt
 def affichage_grille(grille: grid):
     """
     Affiche la grille de jeu.
@@ -285,11 +285,14 @@ def test_detecte_coordonnees_combinaison():
 
 def etendre_combinaison(grille: grid, combinaison):
     """
-    Etend une combinaison en ligne ou en colonne.
+    Etend une combinaison en ligne ou en colonne pour pouvoir détecter les combinaisons de niveau 3. C'est à dire
+    qu'il faut vérifier si il y a des bonbons adjacents à la combinaison qui sont de la même couleur.
+
     Entrées :
         - grille : la grille du jeu
         - combinaison : une liste de bonbons list[Tuple(x,y)]
-    Sortie : La cominaison étendue list[Tuple(x,y)]
+
+    Sortie : La combinaison étendue list[Tuple(x,y)]
     """
     deja_explores = []
     a_explorer = [combinaison[0]]
@@ -389,7 +392,7 @@ def main():
                 descendre_bonbons(grille)
                 inserer_bonbons(grille)
                 affichage_grille(grille)
-                total_combinaisons = trouver_combinaisons_grille(grille)         
+                total_combinaisons = trouver_combinaisons_grille(grille)
 
             combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
         affichage_grille(grille)
