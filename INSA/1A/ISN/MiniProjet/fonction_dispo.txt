@@ -22,3 +22,11 @@ affichage_grille
 
 test_detecte_coordonnees_combinaison
 
+
+
+
+# Dans le rapport
+
+- décrire les régles du jeu : Comment on joue, les points...
+
+- On rends une archive avec le/les fichiers python et le rapport en PDF

@@ -33,23 +33,6 @@ def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
     )
 
 
-def retirer_bonbon(grille: grid, b1: candy, b2: candy) -> None:
-    """
-    Retire les bonbons entre b1 et b2 en remplaçant leur valeurs par des -1.
-    Entrées :
-        - grille : la grille du jeu
-        - b1 : objet Tuple (x1, y1) représentant les coordonnées du premier bonbon
-        - b2 : objet Tuple (x2, y2) représentant les coordonnées du second bonbon
-    Sortie : None
-    """
-    if b1[0] == b2[0]:  # Si les bonbons sont sur la même ligne
-        for i in range(min(b1[1], b2[1]), max(b1[1], b2[1]) + 1):
-            grille[b1[0]][i] = -1
-    elif b1[1] == b2[1]:  # Si les bonbons sont sur la même colonne
-        for i in range(min(b1[0], b2[0]), max(b1[0], b2[0]) + 1):
-            grille[i][b1[1]] = -1
-
-
 def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
@@ -67,9 +50,6 @@ def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
         )
         i += 1
     return bonbon_dessus
-
-
-obtenir_bonbons_ligne_dessus((1, 3), (3, 3))
 
 
 def descendre_bonbons(grille: grid):
@@ -245,7 +225,6 @@ def combinaison_possible(grille: grid, max=3):
     return possible
 
 
-# import matplotlib.pyplot as plt
 def affichage_grille(grille: grid):
     """
     Affiche la grille de jeu.
@@ -303,11 +282,14 @@ def test_detecte_coordonnees_combinaison():
 
 def etendre_combinaison(grille: grid, combinaison):
     """
-    Etend une combinaison en ligne ou en colonne.
+    Etend une combinaison en ligne ou en colonne pour pouvoir détecter les combinaisons de niveau 3. C'est à dire
+    qu'il faut vérifier si il y a des bonbons adjacents à la combinaison qui sont de la même couleur.
+
     Entrées :
         - grille : la grille du jeu
         - combinaison : une liste de bonbons list[Tuple(x,y)]
-    Sortie : La cominaison étendue list[Tuple(x,y)]
+
+    Sortie : La combinaison étendue list[Tuple(x,y)]
     """
     deja_explores = []
     a_explorer = [combinaison[0]]
