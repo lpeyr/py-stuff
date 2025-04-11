@@ -314,12 +314,11 @@ def trouver_combinaisons_grille(grille: grid) -> list[list[candy]]:
     """
     combinaisons = []
     for i in range(len(grille)):
-        for j in range(len(grille[0])):
-            combi = detecte_coordonnees_combinaison(grille, (i, j))
-            if len(combi) != 0:
-                combi = etendre_combinaison(grille, combi)
-                if len(combi) >= 3:
-                    combinaisons.append(combi)
+        combi = detecte_coordonnees_combinaison(grille, (i, i))
+        if len(combi) != 0:
+            combi = etendre_combinaison(grille, combi)
+            if len(combi) >= 3:
+                combinaisons.append(combi)
     return combinaisons
 
 
