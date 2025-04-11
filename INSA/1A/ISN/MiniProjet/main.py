@@ -377,19 +377,29 @@ def ajouter_points(combinaison:list[candy]) -> int:
     return 123 * 3 + 248 * (len(combinaison) - 2)
 
 
+def effacer():
+    """
+    Efface la console.
+    Entrées : None
+    Sortie : None
+    """
+    os.system("cls" if os.name == "nt" else "clear")
+
 # Programme principal
 def main():
     grille = init_grille(5, 5)  # Création d'une grille 5x5
     points_joueur = 0  # Initialisation des points du joueur
     print("Bienvenue dans le jeu Candy Crush !")
+    effacer()
     affichage_grille(grille)
 
     # Démarage du Jeu
     while combinaison_possible(grille):
+        
         b1, b2 = demander_utilisateur_bonbons(grille)
 
         echanger_bonbon(grille, b1, b2)
-        affichage_grille(grille)
+
 
         combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)   
         
@@ -400,7 +410,6 @@ def main():
                 grille[bonbon[0]][
                     bonbon[1]
                 ] = -1  # on retire les bonbons qui font partie de la combinaison
-            affichage_grille(grille)
             descendre_bonbons(grille)
             # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
             inserer_bonbons(grille) 
@@ -415,11 +424,11 @@ def main():
             
                 descendre_bonbons(grille)
                 inserer_bonbons(grille)
-                affichage_grille(grille)
                 
                 total_combinaisons = trouver_combinaisons_grille(grille)
 
             combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
+        effacer()
         affichage_grille(grille)
         print(f"Vous avez joué un coup ! \n Cela à produit {coup - 1 } combos")
         print(f"Votre Score : {points_joueur} Points")
