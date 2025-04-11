@@ -52,12 +52,12 @@ def test_detecte_coordonnees_combinaison():
     )
 
     # Test 4 : combinaison horizontale en début de ligne
-    grille4 = [
+    grille3 = [
         [4, 4, 4, 2],
         [1, 2, 3, 4],
     ]
     assert_test(
-        detecte_coordonnees_combinaison(grille4, (0, 0)),
+        detecte_coordonnees_combinaison(grille3, (0, 0)),
         [(0, 0), (0, 1), (0, 2)],
         "Combinaison horizontale au début de ligne",
     )
@@ -68,6 +68,19 @@ def test_detecte_coordonnees_combinaison():
         detecte_coordonnees_combinaison(grille5, (1, 1)),
         [],
         "Grille sans aucune combinaison",
+    )
+
+    # Test 6 : combinaison verticale au début de colonne
+    grille4 = [
+        [2, 1],
+        [2, 0],
+        [2, 3],
+        [0, 3],
+    ]
+    assert_test(
+        detecte_coordonnees_combinaison(grille4, (0, 0)),
+        [(0, 0), (1, 0), (2, 0)],
+        "Combinaison verticale au début de la colonne",
     )
 
 

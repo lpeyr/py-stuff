@@ -151,59 +151,81 @@ def demander_utilisateur_bonbons(
 def detecte_coordonnees_combinaison(grille: grid, bonbon: candy, max=3):
     """
     Vérifie si les bonbons sur la ligne ou la colonne du bonbon forment une combinaison. On utilisera une boucle while.
-    Exemple d'Algorithme pour les lignes :
-    CompteurCombi <- 0
-    i <- 0
-    x <- i
-    CombiLigne <- grille[bonbon[0]][i]
-    BonbonCombi=BonbonLigne[0]
-    Tant que CompteurCombi < max et que i < TailleLigne:
-        Si BonbonCombi != Ligne[i]:
-            CompteurCombi = 0
-            x = i
-        Sinon:
-            CompteurCombi += 1
-            CombiLigne.append(Ligne[i])
-        i += 1
 
+    Exemple d'Algorithme pour les lignes :
+      CompteurCombi <- 0
+      i <- 0
+      x <- bonbon[0]
+      CombiLigne <- []
+      BonbonCombi <- grille[x][bonbon[1]]
+      Tant que i < TailleLigne:
+          Si grille[x][i] != BonbonCombi:
+              CompteurCombi <- 0
+              CombiLigne <- []
+          Sinon:
+              CompteurCombi <- CompteurCombi + 1
+              CombiLigne.ajouter((x, i))
+              Si CompteurCombi >= max:
+                  Sauvegarder CombiLigne comme combinaison valide
+          i <- i + 1
+
+    Même logique à appliquer pour la colonne avec j variant de 0 à TailleColonne.
 
     Entrées :
       - grille : la grille du jeu
-      - bonbon : Tuple(x,y) représentant les cordonnées du bonbon
-      - max : Valeur de la taille maximale de la combinaison (ex: 3 en ligne et 3 en colonne)
-    Sortie : Une liste de bonbons list[Tuple(x,y)] qui contient les coordonnées des bonbons de la combinaison
+      - bonbon : Tuple(x, y) représentant les coordonnées du bonbon
+      - max : Valeur de la taille minimale de la combinaison (ex: 3 en ligne et 3 en colonne)
+
+    Sortie :
+      - Une liste de bonbons list[Tuple(x, y)] qui contient les coordonnées des bonbons de la plus longue combinaison
     """
-    combi = []
-    val = grille[bonbon[0]][bonbon[1]]
-    # En ligne
-    i = 0
-    compteur = 0
-    while i < len(grille[bonbon[0]]) and compteur < max:
-        if grille[bonbon[0]][i] == val:
-            compteur += 1
-            combi.append((bonbon[0], i))
-        else:
-            combi = []
-            compteur = 0
-        i += 1
+    x, y = bonbon
+    val = grille[x][y]
+    nb_lignes = len(grille)
+    nb_colonnes = len(grille[0])
 
-    if len(combi) < max:
-        combi = []
-
-    # En colonne
-    i = 0
+    # Détection en ligne (sur la ligne x)
+    j = 0
+    ligne_combinaison = []
     compteur = 0
-    while i < len(grille[0]) and compteur < max and len(combi) < max:
-        if grille[i][bonbon[1]] == val:
+    temp_combi = []
+    while j < nb_colonnes:
+        if grille[x][j] == val:
             compteur += 1
-            combi.append((i, bonbon[1]))
+            temp_combi.append((x, j))
         else:
+            if compteur >= max:
+                ligne_combinaison = temp_combi.copy()
             compteur = 0
-            combi = []
+            temp_combi = []
+        j += 1
+    # Dernier check après la boucle
+    if compteur >= max:
+        ligne_combinaison = temp_combi.copy()
+
+    # Détection en colonne (sur la colonne y)
+    i = 0
+    colonne_combinaison = []
+    compteur = 0
+    temp_combi = []
+    while i < nb_lignes:
+        if grille[i][y] == val:
+            compteur += 1
+            temp_combi.append((i, y))
+        else:
+            if compteur >= max:
+                colonne_combinaison = temp_combi.copy()
+            compteur = 0
+            temp_combi = []
         i += 1
-    if len(combi) < max:
-        combi = []
-    return combi
+    if compteur >= max:
+        colonne_combinaison = temp_combi.copy()
+
+    # On retourne la plus longue combinaison trouvée
+    if len(colonne_combinaison) >= len(ligne_combinaison):
+        return colonne_combinaison
+    else:
+        return ligne_combinaison
 
 
 def combinaison_possible(grille: grid, max=3):
