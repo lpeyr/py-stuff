@@ -1,4 +1,5 @@
 import random
+import os
 
 candy = tuple[int, int]
 grid = list[list]
@@ -332,12 +333,14 @@ def trouver_combinaisons_grille(grille: grid) -> list[list[candy]]:
     """
     combinaisons = []
     for i in range(len(grille)):
-        combinaison = detecte_coordonnees_combinaison(grille, (i, i))
-        if combinaison != []:
-            combinaison_etendue = etendre_combinaison(grille, combinaison)
-            if combinaison_etendue not in combinaisons:
-                combinaisons.append(combinaison_etendue)
+        for j in range(len(grille[0])):
+            combi = detecte_coordonnees_combinaison(grille, (i, j))
+            if len(combi) != 0:
+                combi = etendre_combinaison(grille, combi)
+                if len(combi) >= 3:
+                    combinaisons.append(combi)
     return combinaisons
+
 
 def trouver_combinaisons(grille: grid, b1: candy, b2: candy) -> list[candy]:
     """
@@ -362,10 +365,23 @@ def trouver_combinaisons(grille: grid, b1: candy, b2: candy) -> list[candy]:
     )  # enlever doublons
     return combinaison_b1_b2
 
+# Systeme de points (pas très compliqué)
+def ajouter_points(combinaison:list[candy]) -> int:
+    """
+    Ajoute des points au joueur en fonction de la taille de la combinaison.
+    Entrées :
+        - grille : la grille du jeu
+        - combinaison : une liste de bonbons list[Tuple(x,y)]
+    Sortie : le nombre de points gagnés int
+    """
+    return 123 * 3 + 248 * (len(combinaison) - 2)
+
+
 # Programme principal
 def main():
     grille = init_grille(5, 5)  # Création d'une grille 5x5
-
+    points_joueur = 0  # Initialisation des points du joueur
+    print("Bienvenue dans le jeu Candy Crush !")
     affichage_grille(grille)
 
     # Démarage du Jeu
@@ -375,8 +391,11 @@ def main():
         echanger_bonbon(grille, b1, b2)
         affichage_grille(grille)
 
-        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)        
+        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)   
+        
+        coup = 0
         while combinaison_b1_b2 != []:  # tant que la liste des combinaisons possibles
+            
             for bonbon in combinaison_b1_b2:
                 grille[bonbon[0]][
                     bonbon[1]
@@ -388,18 +407,25 @@ def main():
             total_combinaisons = trouver_combinaisons_grille(grille)
             while len(total_combinaisons) != 0:
                 for combinaison in total_combinaisons:
+                    points_joueur += ajouter_points(combinaison)
+                    coup += 1
                     for bonbon in combinaison:
                         grille[bonbon[0]][bonbon[1]] = -1
+                        
+            
                 descendre_bonbons(grille)
                 inserer_bonbons(grille)
                 affichage_grille(grille)
+                
                 total_combinaisons = trouver_combinaisons_grille(grille)
 
             combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
         affichage_grille(grille)
+        print(f"Vous avez joué un coup ! \n Cela à produit {coup - 1 } combos")
+        print(f"Votre Score : {points_joueur} Points")
 
     print("Il n'y a plus de combinaisons possibles !")
-
+    print(f"Votre Score Final : {points_joueur} Points")
 
 if __name__ == "__main__":
     main()
