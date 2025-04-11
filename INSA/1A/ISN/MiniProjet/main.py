@@ -12,7 +12,12 @@ def init_grille(x: int, y: int) -> grid:
     Sortie :
         - grille : une liste 2D avec des valeurs aléatoires sans combinaison possible.
     """
-    grille = [[-1 for _ in range(y)] for _ in range(x)]
+    grille = []
+    for i in range(x):
+        row = []
+        for j in range(y):
+            row.append(-1)
+        grille.append(row)
 
     inserer_bonbons(grille)
     return grille
@@ -72,8 +77,6 @@ def descendre_bonbons(grille: grid):
 
 
 def inserer_bonbons(grille: grid):
-    # A MODIFIER POUR LE NIVEAU 3, LISTE DE BONBONS A DONNER AU LIEU DE 2
-    # POUR L'INSTANT ON PART DU PRINCIPE QUE LES BONBONS SONT TOUS DE LA MÊME LIGNE OU COLONNE
     """
     Insère des bonbons générés aléatoirements entre les coordonnées b1 et b2
     Entrées :
