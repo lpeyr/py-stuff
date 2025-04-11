@@ -12,7 +12,12 @@ def init_grille(x: int, y: int) -> grid:
     Sortie :
         - grille : une liste 2D avec des valeurs aléatoires sans combinaison possible.
     """
-    grille = [[-1 for _ in range(y)] for _ in range(x)]
+    grille = []
+    for i in range(x):
+        row = []
+        for j in range(y):
+            row.append(-1)
+        grille.append(row)
 
     inserer_bonbons(grille)
     return grille
@@ -31,8 +36,6 @@ def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
         grille[b2[0]][b2[1]],
         grille[b1[0]][b1[1]],
     )
-
-
 def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
@@ -74,8 +77,6 @@ def descendre_bonbons(grille: grid):
 
 
 def inserer_bonbons(grille: grid):
-    # A MODIFIER POUR LE NIVEAU 3, LISTE DE BONBONS A DONNER AU LIEU DE 2
-    # POUR L'INSTANT ON PART DU PRINCIPE QUE LES BONBONS SONT TOUS DE LA MÊME LIGNE OU COLONNE
     """
     Insère des bonbons générés aléatoirements entre les coordonnées b1 et b2
     Entrées :
@@ -233,10 +234,13 @@ def affichage_grille(grille: grid):
     Sortie : None
     """
     bonbons = ["🍭", "🍡", "🍫", "🍦", "  "]
+    print("  ", end="")
+    for j in range(len(grille)):
+        print(str(j) + "  ", end="")
+    print()
     print(" ╔" + "═" * (3 * len(grille[0]) - 1) + "╗")
     for i in range(len(grille)):
-        # if i < 10:
-        #    print("0",end="")
+        
         print(str(i) + "║", end="")
         for j in range(len(grille[i])):
             print(bonbons[grille[i][j]], end="")
@@ -319,6 +323,45 @@ def etendre_combinaison(grille: grid, combinaison):
     return combinaison
 
 
+def trouver_combinaisons_grille(grille: grid) -> list[list[candy]]:
+    """
+    Trouve toutes les combinaisons possibles dans la grille.
+    Entrées :
+        - grille : la grille du jeu
+    Sortie : Une liste de combinaisons list[list[Tuple(x,y)]]
+    """
+    combinaisons = []
+    for i in range(len(grille)):
+        combinaison = detecte_coordonnees_combinaison(grille, (i, i))
+        if combinaison != []:
+            combinaison_etendue = etendre_combinaison(grille, combinaison)
+            if combinaison_etendue not in combinaisons:
+                combinaisons.append(combinaison_etendue)
+    return combinaisons
+
+def trouver_combinaisons(grille: grid, b1: candy, b2: candy) -> list[candy]:
+    """
+    Trouve les combinaisons possibles entre les coordonnées b1 et b2.
+    Entrées :
+        - grille : la grille du jeu
+        - b1 : Tuple(x1, y1) représentant les coordonnées du premier bonbon
+        - b2 : Tuple(x2, y2) représentant les coordonnées du second bonbon
+
+    Sortie : Une combinaisons list[Tuple(x,y)]
+    """
+    combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
+    combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
+
+    if len(combinaison_b1) != 0:
+        combinaison_b1 = etendre_combinaison(grille, combinaison_b1)
+    if len(combinaison_b2) != 0:
+        combinaison_b2 = etendre_combinaison(grille, combinaison_b2)
+
+    combinaison_b1_b2 = enlever_doublons(
+        combinaison_b1, combinaison_b2
+    )  # enlever doublons
+    return combinaison_b1_b2
+
 # Programme principal
 def main():
     grille = init_grille(5, 5)  # Création d'une grille 5x5
@@ -326,27 +369,13 @@ def main():
     affichage_grille(grille)
 
     # Démarage du Jeu
-
     while combinaison_possible(grille):
-
         b1, b2 = demander_utilisateur_bonbons(grille)
 
         echanger_bonbon(grille, b1, b2)
         affichage_grille(grille)
 
-        # On recupère les combinaisons possible du b1 et du b2 -> cette liste de
-        combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
-        combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
-
-        if len(combinaison_b1) != 0:
-            combinaison_b1 = etendre_combinaison(grille, combinaison_b1)
-        if len(combinaison_b2) != 0:
-            combinaison_b2 = etendre_combinaison(grille, combinaison_b2)
-
-        combinaison_b1_b2 = enlever_doublons(
-            combinaison_b1, combinaison_b2
-        )  # enlever doublons
-
+        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)        
         while combinaison_b1_b2 != []:  # tant que la liste des combinaisons possibles
             for bonbon in combinaison_b1_b2:
                 grille[bonbon[0]][
@@ -354,19 +383,19 @@ def main():
                 ] = -1  # on retire les bonbons qui font partie de la combinaison
             affichage_grille(grille)
             descendre_bonbons(grille)
-            inserer_bonbons(
-                grille
-            )  # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
+            # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
+            inserer_bonbons(grille) 
+            total_combinaisons = trouver_combinaisons_grille(grille)
+            while len(total_combinaisons) != 0:
+                for combinaison in total_combinaisons:
+                    for bonbon in combinaison:
+                        grille[bonbon[0]][bonbon[1]] = -1
+                descendre_bonbons(grille)
+                inserer_bonbons(grille)
+                affichage_grille(grille)
+                total_combinaisons = trouver_combinaisons_grille(grille)
 
-            # TODO vérifier toute la grille plutôt que le comportement local autour de b1 et b2
-            combinaison_b1 = detecte_coordonnees_combinaison(grille, b1)
-            if len(combinaison_b1) != 0:
-                combinaison_b1 = etendre_combinaison(grille, combinaison_b1)
-            combinaison_b2 = detecte_coordonnees_combinaison(grille, b2)
-            if len(combinaison_b2) != 0:
-                combinaison_b2 = etendre_combinaison(grille, combinaison_b2)
-
-            combinaison_b1_b2 = enlever_doublons(combinaison_b1, combinaison_b2)
+            combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
         affichage_grille(grille)
 
     print("Il n'y a plus de combinaisons possibles !")
