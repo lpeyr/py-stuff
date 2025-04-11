@@ -31,11 +31,6 @@ def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
         grille[b2[0]][b2[1]],
         grille[b1[0]][b1[1]],
     )
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 62a007445bbd00a8456b5742bb6bf45920608bbc
 def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
