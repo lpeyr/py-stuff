@@ -36,8 +36,6 @@ def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
         grille[b2[0]][b2[1]],
         grille[b1[0]][b1[1]],
     )
-
-
 def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
@@ -236,10 +234,13 @@ def affichage_grille(grille: grid):
     Sortie : None
     """
     bonbons = ["🍭", "🍡", "🍫", "🍦", "  "]
+    print("  ", end="")
+    for j in range(len(grille)):
+        print(str(j) + "  ", end="")
+    print()
     print(" ╔" + "═" * (3 * len(grille[0]) - 1) + "╗")
     for i in range(len(grille)):
-        # if i < 10:
-        #    print("0",end="")
+        
         print(str(i) + "║", end="")
         for j in range(len(grille[i])):
             print(bonbons[grille[i][j]], end="")
@@ -338,7 +339,6 @@ def trouver_combinaisons_grille(grille: grid) -> list[list[candy]]:
                 combinaisons.append(combinaison_etendue)
     return combinaisons
 
-
 def trouver_combinaisons(grille: grid, b1: candy, b2: candy) -> list[candy]:
     """
     Trouve les combinaisons possibles entre les coordonnées b1 et b2.
@@ -362,7 +362,6 @@ def trouver_combinaisons(grille: grid, b1: candy, b2: candy) -> list[candy]:
     )  # enlever doublons
     return combinaison_b1_b2
 
-
 # Programme principal
 def main():
     grille = init_grille(5, 5)  # Création d'une grille 5x5
@@ -376,7 +375,7 @@ def main():
         echanger_bonbon(grille, b1, b2)
         affichage_grille(grille)
 
-        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
+        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)        
         while combinaison_b1_b2 != []:  # tant que la liste des combinaisons possibles
             for bonbon in combinaison_b1_b2:
                 grille[bonbon[0]][
@@ -385,7 +384,7 @@ def main():
             affichage_grille(grille)
             descendre_bonbons(grille)
             # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
-            inserer_bonbons(grille)
+            inserer_bonbons(grille) 
             total_combinaisons = trouver_combinaisons_grille(grille)
             while len(total_combinaisons) != 0:
                 for combinaison in total_combinaisons:
