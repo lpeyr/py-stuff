@@ -14,9 +14,9 @@ def init_grille(x: int, y: int) -> grid:
         - grille : une liste 2D avec des valeurs aléatoires sans combinaison possible.
     """
     grille = []
-    for i in range(x):
+    for _ in range(x):
         row = []
-        for j in range(y):
+        for _ in range(y):
             row.append(-1)
         grille.append(row)
 
@@ -180,52 +180,40 @@ def detecte_coordonnees_combinaison(grille: grid, bonbon: candy, max=3):
       - Une liste de bonbons list[Tuple(x, y)] qui contient les coordonnées des bonbons de la plus longue combinaison
     """
     x, y = bonbon
-    val = grille[x][y]
-    nb_lignes = len(grille)
-    nb_colonnes = len(grille[0])
+    valeur = grille[x][y]
+    resultat = []
 
-    # Détection en ligne (sur la ligne x)
-    j = 0
-    ligne_combinaison = []
-    compteur = 0
-    temp_combi = []
-    while j < nb_colonnes:
-        if grille[x][j] == val:
-            compteur += 1
-            temp_combi.append((x, j))
-        else:
-            if compteur >= max:
-                ligne_combinaison = temp_combi.copy()
-            compteur = 0
-            temp_combi = []
-        j += 1
-    # Dernier check après la boucle
-    if compteur >= max:
-        ligne_combinaison = temp_combi.copy()
-
-    # Détection en colonne (sur la colonne y)
+    # Vérification horizontale
     i = 0
-    colonne_combinaison = []
     compteur = 0
-    temp_combi = []
-    while i < nb_lignes:
-        if grille[i][y] == val:
+    combi_ligne = []
+    while i < len(grille[0]):
+        if grille[x][i] == valeur:
             compteur += 1
-            temp_combi.append((i, y))
-        else:
+            combi_ligne.append((x, i))
             if compteur >= max:
-                colonne_combinaison = temp_combi.copy()
+                resultat = combi_ligne
+        else:
             compteur = 0
-            temp_combi = []
+            combi_ligne = []
         i += 1
-    if compteur >= max:
-        colonne_combinaison = temp_combi.copy()
 
-    # On retourne la plus longue combinaison trouvée
-    if len(colonne_combinaison) >= len(ligne_combinaison):
-        return colonne_combinaison
-    else:
-        return ligne_combinaison
+    # Vérification verticale
+    j = 0
+    compteur = 0
+    combi_colonne = []
+    while j < len(grille):
+        if grille[j][y] == valeur:
+            compteur += 1
+            combi_colonne.append((j, y))
+            if compteur >= max:
+                resultat = combi_colonne
+        else:
+            compteur = 0
+            combi_colonne = []
+        j += 1
+
+    return resultat
 
 
 def combinaison_possible(grille: grid, max=3):
