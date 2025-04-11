@@ -150,3 +150,13 @@ while combinaison_possible(grille):
             grille
         )  # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
 ```
+
+# Dans le rapport
+
+- Décrire les régles du jeu : Comment on joue, les points...
+- On rends une archive avec le/les fichiers python et le rapport en PDF
+
+## Points
+
+- 123 pt les 3 premier bonbon
+- 248 pts les autres bonbon
