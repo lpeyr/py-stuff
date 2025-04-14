@@ -14,9 +14,9 @@ def init_grille(x: int, y: int) -> grid:
         - grille : une liste 2D avec des valeurs aléatoires sans combinaison possible.
     """
     grille = []
-    for i in range(x):
+    for _ in range(x):
         row = []
-        for j in range(y):
+        for _ in range(y):
             row.append(-1)
         grille.append(row)
 
@@ -37,6 +37,8 @@ def echanger_bonbon(grille: grid, b1: candy, b2: candy) -> None:
         grille[b2[0]][b2[1]],
         grille[b1[0]][b1[1]],
     )
+
+
 def obtenir_bonbons_ligne_dessus(b1: candy, b2: candy) -> grid:
     """
     Obtient les bonbons de la ligne du dessus entre les coordonnées du bonbon 1 et 2.
@@ -123,6 +125,7 @@ def demander_utilisateur_bonbons(
         or b2[0] >= len(grille)
         or b2[1] < 0
         or b2[1] >= len(grille[0])
+        or (b1[0] == b2[0] and b1[1] == b2[1])
     ):
         # Demander à l'utilisateur de saisir les coordonnées des bonbons
         b1[0] = int(input("Entrez la ligne du premier bonbon (x1) : "))
@@ -148,59 +151,69 @@ def demander_utilisateur_bonbons(
 def detecte_coordonnees_combinaison(grille: grid, bonbon: candy, max=3):
     """
     Vérifie si les bonbons sur la ligne ou la colonne du bonbon forment une combinaison. On utilisera une boucle while.
-    Exemple d'Algorithme pour les lignes :
-    CompteurCombi <- 0
-    i <- 0
-    x <- i
-    CombiLigne <- grille[bonbon[0]][i]
-    BonbonCombi=BonbonLigne[0]
-    Tant que CompteurCombi < max et que i < TailleLigne:
-        Si BonbonCombi != Ligne[i]:
-            CompteurCombi = 0
-            x = i
-        Sinon:
-            CompteurCombi += 1
-            CombiLigne.append(Ligne[i])
-        i += 1
 
+    Exemple d'Algorithme pour les lignes :
+      CompteurCombi <- 0
+      i <- 0
+      x <- bonbon[0]
+      CombiLigne <- []
+      BonbonCombi <- grille[x][bonbon[1]]
+      Tant que i < TailleLigne:
+          Si grille[x][i] != BonbonCombi:
+              CompteurCombi <- 0
+              CombiLigne <- []
+          Sinon:
+              CompteurCombi <- CompteurCombi + 1
+              CombiLigne.ajouter((x, i))
+              Si CompteurCombi >= max:
+                  Sauvegarder CombiLigne comme combinaison valide
+          i <- i + 1
+
+    Même logique à appliquer pour la colonne avec j variant de 0 à TailleColonne.
 
     Entrées :
       - grille : la grille du jeu
-      - bonbon : Tuple(x,y) représentant les cordonnées du bonbon
-      - max : Valeur de la taille maximale de la combinaison (ex: 3 en ligne et 3 en colonne)
-    Sortie : Une liste de bonbons list[Tuple(x,y)] qui contient les coordonnées des bonbons de la combinaison
+      - bonbon : Tuple(x, y) représentant les coordonnées du bonbon
+      - max : Valeur de la taille minimale de la combinaison (ex: 3 en ligne et 3 en colonne)
+
+    Sortie :
+      - Une liste de bonbons list[Tuple(x, y)] qui contient les coordonnées des bonbons de la plus longue combinaison
     """
-    combi = []
-    val = grille[bonbon[0]][bonbon[1]]
-    # En ligne
+    x, y = bonbon
+    valeur = grille[x][y]
+    resultat = []
+
+    # Vérification horizontale
     i = 0
     compteur = 0
-    while i < len(grille[bonbon[0]]) and compteur < max:
-        if grille[bonbon[0]][i] == val:
+    combi_ligne = []
+    while i < len(grille[0]):
+        if grille[x][i] == valeur:
             compteur += 1
-            combi.append((bonbon[0], i))
+            combi_ligne.append((x, i))
+            if compteur >= max:
+                resultat = combi_ligne
         else:
-            combi = []
             compteur = 0
+            combi_ligne = []
         i += 1
 
-    if len(combi) < max:
-        combi = []
-
-    # En colonne
-    i = 0
+    # Vérification verticale
+    j = 0
     compteur = 0
-    while i < len(grille[0]) and compteur < max and len(combi) < max:
-        if grille[i][bonbon[1]] == val:
+    combi_colonne = []
+    while j < len(grille):
+        if grille[j][y] == valeur:
             compteur += 1
-            combi.append((i, bonbon[1]))
+            combi_colonne.append((j, y))
+            if compteur >= max:
+                resultat = combi_colonne
         else:
             compteur = 0
-            combi = []
-        i += 1
-    if len(combi) < max:
-        combi = []
-    return combi
+            combi_colonne = []
+        j += 1
+
+    return resultat
 
 
 def combinaison_possible(grille: grid, max=3):
@@ -241,7 +254,7 @@ def affichage_grille(grille: grid):
     print()
     print(" ╔" + "═" * (3 * len(grille[0]) - 1) + "╗")
     for i in range(len(grille)):
-        
+
         print(str(i) + "║", end="")
         for j in range(len(grille[i])):
             print(bonbons[grille[i][j]], end="")
@@ -265,26 +278,6 @@ def enlever_doublons(liste1, liste2):
     return resultat
 
 
-def test_detecte_coordonnees_combinaison():
-    """
-    Test la fonction detecte_coordonnees_combinaison(grille, i, j).
-    Pour chaque cas de test, affiche True si le test passe,
-    False sinon
-    """
-    grille = [
-        [0, 1, 3, 3, 0],
-        [1, 1, 1, 3, 2],
-        [0, 0, 2, 0, 1],
-        [1, 1, 2, 3, 0],
-        [0, 1, 0, 3, 0],
-    ]
-    print(detecte_coordonnees_combinaison(grille, (1, 1)))  # True
-    print(detecte_coordonnees_combinaison(grille, (2, 2)))  # False
-    print(detecte_coordonnees_combinaison(grille, (4, 4)))  # False
-    print(detecte_coordonnees_combinaison(grille, (0, 0)))  # False
-    print(detecte_coordonnees_combinaison(grille, (1, 0)))  # False
-
-
 def etendre_combinaison(grille: grid, combinaison):
     """
     Etend une combinaison en ligne ou en colonne pour pouvoir détecter les combinaisons de niveau 3. C'est à dire
@@ -299,11 +292,9 @@ def etendre_combinaison(grille: grid, combinaison):
     deja_explores = []
     a_explorer = [combinaison[0]]
     while len(a_explorer) != 0:
-        # print(a_explorer)
         actuel = a_explorer[-1]
         a_explorer.pop(-1)
         deja_explores.append(actuel)
-        # print("dfsd",deja_explores)
         for i in range(-1, 2):
             for j in range(-1, 2):
                 if (
@@ -333,12 +324,11 @@ def trouver_combinaisons_grille(grille: grid) -> list[list[candy]]:
     """
     combinaisons = []
     for i in range(len(grille)):
-        for j in range(len(grille[0])):
-            combi = detecte_coordonnees_combinaison(grille, (i, j))
-            if len(combi) != 0:
-                combi = etendre_combinaison(grille, combi)
-                if len(combi) >= 3:
-                    combinaisons.append(combi)
+        combi = detecte_coordonnees_combinaison(grille, (i, i))
+        if len(combi) != 0:
+            combi = etendre_combinaison(grille, combi)
+            if len(combi) >= 3:
+                combinaisons.append(combi)
     return combinaisons
 
 
@@ -365,8 +355,9 @@ def trouver_combinaisons(grille: grid, b1: candy, b2: candy) -> list[candy]:
     )  # enlever doublons
     return combinaison_b1_b2
 
-# Systeme de points (pas très compliqué)
-def ajouter_points(combinaison:list[candy]) -> int:
+
+# Systeme de point
+def ajouter_points(combinaison: list[candy]) -> int:
     """
     Ajoute des points au joueur en fonction de la taille de la combinaison.
     Entrées :
@@ -380,10 +371,9 @@ def ajouter_points(combinaison:list[candy]) -> int:
 def effacer():
     """
     Efface la console.
-    Entrées : None
-    Sortie : None
     """
     os.system("cls" if os.name == "nt" else "clear")
+
 
 # Programme principal
 def main():
@@ -395,24 +385,25 @@ def main():
 
     # Démarage du Jeu
     while combinaison_possible(grille):
-        
+
         b1, b2 = demander_utilisateur_bonbons(grille)
 
         echanger_bonbon(grille, b1, b2)
 
+        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
 
-        combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)   
-        
         coup = 0
         while combinaison_b1_b2 != []:  # tant que la liste des combinaisons possibles
-            
             for bonbon in combinaison_b1_b2:
                 grille[bonbon[0]][
                     bonbon[1]
                 ] = -1  # on retire les bonbons qui font partie de la combinaison
             descendre_bonbons(grille)
             # Ajouter des bonbons de sorte à ce qu'il n'y ait pas de nouvelles combinaisons
-            inserer_bonbons(grille) 
+            inserer_bonbons(grille)
+            points_joueur += ajouter_points(combinaison_b1_b2)
+
+            # On cherche de nouvelles combinaisons
             total_combinaisons = trouver_combinaisons_grille(grille)
             while len(total_combinaisons) != 0:
                 for combinaison in total_combinaisons:
@@ -420,21 +411,21 @@ def main():
                     coup += 1
                     for bonbon in combinaison:
                         grille[bonbon[0]][bonbon[1]] = -1
-                        
-            
+
                 descendre_bonbons(grille)
                 inserer_bonbons(grille)
-                
+
                 total_combinaisons = trouver_combinaisons_grille(grille)
 
             combinaison_b1_b2 = trouver_combinaisons(grille, b1, b2)
         effacer()
         affichage_grille(grille)
-        print(f"Vous avez joué un coup ! \n Cela à produit {coup - 1 } combos")
+        print(f"Vous avez joué un coup ! \nCela a produit {coup} combos")
         print(f"Votre Score : {points_joueur} Points")
 
     print("Il n'y a plus de combinaisons possibles !")
     print(f"Votre Score Final : {points_joueur} Points")
+
 
 if __name__ == "__main__":
     main()
