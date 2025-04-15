@@ -30,6 +30,14 @@ python main.py
 
 Vous serez invité à choisir deux bonbons à échanger en indiquant leurs coordonnées respectives. Le jeu continuera jusqu'à ce que vous décidiez de quitter (CTRL+C).
 
+## 🧪 Tests
+
+Pour vérifier le bon fonctionnement du code, vous pouvez exécuter les tests unitaires fournis dans le fichier `tests.py`.
+
+```bash
+python tests.py
+```
+
 ## 👨‍💻 Auteurs
 
 Projet réalisé par Léo Peyronnet, Marouan El Hamdeoui, Tom Valdant et Matéo Philibert dans le cadre de l'enseignement ISN2 à l'INSA Lyon (FIMI).
