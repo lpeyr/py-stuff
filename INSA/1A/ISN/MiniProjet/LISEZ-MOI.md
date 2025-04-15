@@ -28,6 +28,8 @@ Assurez-vous d'avoir Python installé (version 3.10+ recommandée).
 python main.py
 ```
 
+Vous serez invité à choisir deux bonbons à échanger en indiquant leurs coordonnées respectives. Le jeu continuera jusqu'à ce que vous décidiez de quitter (CTRL+C).
+
 ## 👨‍💻 Auteurs
 
 Projet réalisé par Léo Peyronnet, Marouan El Hamdeoui, Tom Valdant et Matéo Philibert dans le cadre de l'enseignement ISN2 à l'INSA Lyon (FIMI).
