@@ -1,16 +1,17 @@
-
-# Rapport du mini-projet Candy Crush Lite
+# Rapport du mini-projet Candy Crush
 
 ## I. Quel niveau de difficulté avez-vous implémenté ?
 
-Dans notre projet **Candy Crush Lite**, nous avons implémenté le **niveau de difficulté 3**, c’est-à-dire la capacité à détecter des **combinaisons** non seulement entre **des bonbons adjacents directs**, mais également entre **les voisins des voisins**.  
+Dans notre projet **Candy Crush**, nous avons implémenté le **niveau de difficulté 3**, c’est-à-dire la capacité à détecter des **combinaisons** non seulement entre **des bonbons adjacents directs**, mais également entre **les voisins des voisins**.  
 Cela permet de gérer des suppressions de bonbons plus complexes et d'offrir une meilleure dynamique de jeu que les niveaux basiques.
 
 ---
 
 ## II. Décrivez les règles de votre jeu en quelques lignes
 
-Le jeu **Candy Crush Lite** est une version simplifiée de Candy Crush, jouable entièrement dans le **terminal**. Le but est d’aligner des bonbons de la même couleur pour les faire disparaître et marquer des points. Voici les règles principales :
+### Règles
+
+Notre jeu **Candy Crush** est jouable entièrement dans le **terminal**. Le but est d’aligner des bonbons de la même couleur pour les faire disparaître et marquer des points. Voici les règles principales :
 
 - Le plateau de jeu est une **grille de bonbons** générée aléatoirement.
 - Le joueur sélectionne deux cases à échanger.
@@ -19,37 +20,43 @@ Le jeu **Candy Crush Lite** est une version simplifiée de Candy Crush, jouable 
 - Le jeu permet des combinaisons avancées : il peut détecter et supprimer **les combinaisons indirectes** (ex. en chaîne, ou via des voisins éloignés).
 - Le jeu continue jusqu’à ce que le joueur décide d’arrêter.
 
+### Comment jouer
+
+Lancer le fichier `main.py` dans le terminal. Le jeu affichera le plateau de jeu et vous demandera de choisir deux bonbons à échanger en indiquant leurs coordonnées respectives. Vous pouvez continuer à jouer jusqu'à ce que vous décidiez de quitter (CTRL+C).
+
 ---
 
 ## III. Écrivez l’algorithme principal de votre jeu en français
 
 L’algorithme principal se trouve dans la fonction `main()`. Il gère le déroulement du jeu, l’interaction utilisateur et les appels aux différentes fonctionnalités.
 
-### 🔁 Algorithme principal du jeu (`main()`)
+### Algorithme principal du jeu (`main()`)
 
 ```
-1. Charger les articles depuis le fichier CSV en utilisant la fonction `charger_articles`.
-
-2. Tant que l’utilisateur ne choisit pas de quitter :
-    a. Afficher un menu avec plusieurs options :
-        - Afficher la liste des articles
-        - Ajouter un article
-        - Supprimer un article
-        - Rechercher un article
-        - Enregistrer les modifications
-        - Trier les articles par prix
-        - Quitter
-
-    b. Lire le choix de l’utilisateur.
-
-    c. En fonction du choix, exécuter l'action correspondante :
-        - Affichage, ajout, suppression ou recherche d’articles
-        - Sauvegarde ou tri des articles
-        - Si le choix est invalide, afficher un message d'erreur
-
-3. Lorsque l’utilisateur choisit de quitter :
-    a. Afficher un message de fin
-    b. Sortir de la boucle et arrêter le programme
+Initialiser la grille :
+    Demander à l'utilisateur la taille de la grille (nombre de lignes et de colonnes).
+    Appeler la fonction init_grille(x, y) pour créer une grille de bonbons sans combinaison immédiate.
+Afficher la grille :
+    Utiliser la fonction affichage_grille(grille) pour montrer l’état actuel du jeu à l’utilisateur.
+Boucle principale du jeu :
+Tant que l’utilisateur ne décide pas d’arrêter :
+a. Demander un échange :
+    Appeler demander_utilisateur_bonbons(grille) pour obtenir deux positions de bonbons à échanger.
+    Vérifier que ces bonbons sont bien adjacents (déjà fait dans la fonction).
+b. Échanger les bonbons :
+    Appeler echanger_bonbon(grille, b1, b2).
+c. Détecter les combinaisons :
+    Utiliser detecte_coordonnees_combinaison pour voir s’il y a une combinaison après l’échange.
+    Si aucune combinaison n’est formée, annuler l’échange.
+    Sinon :
+        Étendre la combinaison (avec etendre_combinaison).
+        Supprimer les bonbons de la combinaison (mettre les cases à -1).
+        Faire descendre les bonbons (descendre_bonbons) et insérer de nouveaux (inserer_bonbons).
+        Répéter tant qu’il existe encore des combinaisons (trouver_combinaisons_grille puis suppression).
+d. Afficher la grille mise à jour.
+e. Vérifier si des combinaisons sont encore possibles :
+    Appeler combinaison_possible(grille).
+    Si aucune combinaison n’est possible, afficher un message et arrêter le jeu (ou proposer de recommencer).
 ```
 
 ---
