@@ -1,0 +1,12 @@
+,,
+,,
+,,
+,Colonne,Signification
+,Id,L’identifiant du trajet. Unique pour chaque trajet
+,date_out,Date et heure (dateTime) de récupération du vélo
+,date_in,Date et heure (dateTime) de retour du vélo
+,station_in,identifiant de la station où est retourné le vélo
+,station_out,identifiant de la station d’où a été récupéré le vélo
+,class_of_use,"Type d’usage fait avec le velo (exemple trajet loisir, travail,…, chaque type est représenté par un code"
+,trip_distance,distance parcourue lors du trajet en mètres 
+,time_of_use,durée du trajet en mns
