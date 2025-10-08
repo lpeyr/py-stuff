@@ -1,0 +1,102 @@
+Nom,Prenom,Ville,NumEtudiant,cours,valeur
+RAVEL,Maurice,SAINT ETIENNE,12024,analyse 1,17.0
+RAVEL,Maurice,SAINT ETIENNE,12024,analyse 2,15.0
+RAVEL,Maurice,SAINT ETIENNE,12024,analyse 3,
+MALRAUX,André,GRENOBLE,12042,analyse 1,
+MALRAUX,André,GRENOBLE,12042,atomistique,18.0
+MALRAUX,André,GRENOBLE,12042,électricité générale,
+MALRAUX,André,GRENOBLE,12042,mécanique générale,
+MALRAUX,André,GRENOBLE,12042,optique géométrique,14.0
+FRANK,César,PARIS,12057,électricité générale,
+BRASSENS,Georges,SETE,12086,anglais,
+BRASSENS,Georges,SETE,12086,informatique,14.0
+BERLIOZ,Hector,LA COTE ST ANDRE,12104,analyse 1,15.0
+ARAGON,Louis,PARIS,12115,analyse 1,
+MERIMEE,Prosper,VILLEURBANNE,12124,optique géométrique,
+HUGO,Victor,SAINT ETIENNE,12129,mécanique générale,
+COURBET,Gustave,LYON,12149,analyse 1,
+COURBET,Gustave,LYON,12149,mécanique générale,12.0
+COMTE,Auguste,GRENOBLE,12183,optique géométrique,
+ELUARD,Paul,PARIS,12186,optique géométrique,
+BREL,Jacques,PARIS,12239,anglais,13.0
+BREL,Jacques,PARIS,12239,atomistique,
+CAMUS,Albert,LYON,12245,analyse 1,13.0
+CAMUS,Albert,LYON,12245,analyse 2,
+CAMUS,Albert,LYON,12245,électrostatique,
+CAMUS,Albert,LYON,12245,théorie des champs,11.0
+PROUST,Marcel,LYON,12284,optique géométrique,
+FAURE,Gabriel,VILLEURBANNE,12289,analyse 1,
+GALOIS,Evariste,LYON,12291,analyse 1,15.0
+GALOIS,Evariste,LYON,12291,analyse 2,16.0
+GALOIS,Evariste,LYON,12291,analyse 3,
+GALOIS,Evariste,LYON,12291,statistiques,
+ZOLA,Emile,BOURG EN BRESSE,12306,atomistique,
+SAND,George,VIENNE,12309,analyse 1,10.0
+SAND,George,VIENNE,12309,atomistique,
+SAND,George,VIENNE,12309,électricité générale,
+BASTIE,Maryse,GRENOBLE,12319,informatique,
+GREEN,Julien,PARIS,12333,anglais,
+PAPIN,Denis,PARIS,12335,informatique,
+VERLAINE,Paul,GRENOBLE,12342,thermodynamique,
+MALLARME,Stéphane,LYON,12351,anglais,15.0
+NIEPCE,Nicéphore,CHALON SUR SAONE,12362,optique géométrique,15.0
+NIEPCE,Nicéphore,CHALON SUR SAONE,12362,optique physique,
+LUMIERE,Auguste,LYON,12407,électricité générale,17.0
+LUMIERE,Auguste,LYON,12407,électronique,
+LUMIERE,Auguste,LYON,12407,optique géométrique,14.0
+LUMIERE,Auguste,LYON,12407,optique physique,
+LUMIERE,Auguste,LYON,12407,thermodynamique,
+LALO,Edouard,PARIS,12417,analyse 1,
+LEGER,Fernand,ANNECY,12442,anglais,
+DEBUSSY,Claude,CHAMBERY,12444,anglais,
+DEBUSSY,Claude,CHAMBERY,12444,atomistique,
+DEBUSSY,Claude,CHAMBERY,12444,informatique,15.0
+DEBUSSY,Claude,CHAMBERY,12444,thermodynamique,
+PAGNOL,Marcel,MARSEILLE,12473,analyse 1,
+PASCAL,Blaise,CLERMONT FERRAND,12477,analyse 1,18.0
+PASCAL,Blaise,CLERMONT FERRAND,12477,analyse 2,20.0
+PASCAL,Blaise,CLERMONT FERRAND,12477,analyse 3,19.0
+PASCAL,Blaise,CLERMONT FERRAND,12477,mécanique générale,19.0
+PASCAL,Blaise,CLERMONT FERRAND,12477,mécanique quantique,
+PASCAL,Blaise,CLERMONT FERRAND,12477,mécanique relativiste,
+PASCAL,Blaise,CLERMONT FERRAND,12477,mécanique statistique,18.0
+PASCAL,Blaise,CLERMONT FERRAND,12477,statistiques,17.0
+SARTRE,Jean Paul,PARIS,12487,électricité générale,
+BERNARD,Claude,LYON,12541,analyse 1,17.0
+CURIE,Marie,PARIS,12544,analyse 1,19.0
+CURIE,Marie,PARIS,12544,analyse 2,20.0
+CURIE,Marie,PARIS,12544,anglais,
+CURIE,Marie,PARIS,12544,mécanique statistique,
+CURIE,Marie,PARIS,12544,statistiques,20.0
+YOURCENAR,Marguerite,PARIS,12554,atomistique,
+BLERIOT,Louis,PARIS,12555,analyse 1,16.0
+DUHAMEL,Georges,LE HAVRE,12601,analyse 1,
+RENOIR,Auguste,LYON,12609,atomistique,
+PREVERT,Jacques,VILLEURBANNE,12639,anglais,
+PREVERT,Jacques,VILLEURBANNE,12639,informatique,14.0
+GIDE,Andre,LYON,12664,analyse 1,
+CURIE,Irene,PARIS,12713,analyse 1,19.0
+CURIE,Irene,PARIS,12713,analyse 2,18.0
+CURIE,Irene,PARIS,12713,analyse 3,14.0
+CURIE,Irene,PARIS,12713,informatique,
+CURIE,Irene,PARIS,12713,mécanique générale,15.0
+CURIE,Irene,PARIS,12713,mécanique quantique,20.0
+CURIE,Irene,PARIS,12713,mécanique relativiste,18.0
+GAUGUIN,Paul,LILLE,12714,électricité générale,
+MANET,Edouard,PARIS,12729,électricité générale,12.0
+MERMOZ,Jean,BRON,12741,analyse 1,12.0
+MERMOZ,Jean,BRON,12741,cristallographie,
+RENOIR,Jean,VILLEURBANNE,12810,analyse 1,
+DUKAS,Paul,BRON,12841,analyse 1,15.0
+DUKAS,Paul,BRON,12841,analyse 2,17.0
+DUKAS,Paul,BRON,12841,électrostatique,16.0
+DUKAS,Paul,BRON,12841,magnétostatique,
+DUKAS,Paul,BRON,12841,théorie des champs,15.0
+LUMIERE,Louis,LYON,12849,électricité générale,15.0
+LUMIERE,Louis,LYON,12849,électronique,
+LUMIERE,Louis,LYON,12849,optique géométrique,16.0
+LUMIERE,Louis,LYON,12849,optique physique,16.0
+CARTIER,Jacques,MONTREAL,12904,atomistique,
+BIZET,Georges,ARLES,12907,analyse 1,
+DURAS,Marguerite,PARIS,12917,analyse 1,
+VERNE,Jules,BRON,12958,analyse 1,12.0
