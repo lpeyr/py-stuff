@@ -1,0 +1,853 @@
+{
+    "N20237": {
+        "voisins": [
+            "N20236",
+            "N32301",
+            "N13410"
+        ],
+        "incidence": [
+            "T28913",
+            "T28912",
+            "T28911"
+        ],
+        "nom": "COUTURIER|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89677803,
+                45.76064098
+            ]
+        }
+    },
+    "N20236": {
+        "voisins": [
+            "N20237",
+            "N13150",
+            "N32301"
+        ],
+        "incidence": [
+            "T28913",
+            "T28909",
+            "T28910"
+        ],
+        "nom": "COUTURIER|BLUM",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89579168,
+                45.75989707
+            ]
+        }
+    },
+    "N32301": {
+        "voisins": [
+            "N20237",
+            "N11318",
+            "N20236",
+            "N13179"
+        ],
+        "incidence": [
+            "T51750",
+            "T28910",
+            "T54464",
+            "T457",
+            "T28912"
+        ],
+        "nom": "BLUM|BERTHELOT|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89687518,
+                45.75997792
+            ]
+        }
+    },
+    "N13410": {
+        "voisins": [
+            "N20237",
+            "N13411",
+            "N13180"
+        ],
+        "incidence": [
+            "T387",
+            "T28911",
+            "T25469"
+        ],
+        "nom": "COTE|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89672401,
+                45.76106382
+            ]
+        }
+    },
+    "N13150": {
+        "voisins": [
+            "N13148",
+            "N13149",
+            "N20236"
+        ],
+        "incidence": [
+            "T462",
+            "T25470",
+            "T28909"
+        ],
+        "nom": "DUCROIZE|BLUM",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89536702,
+                45.7598649
+            ]
+        }
+    },
+    "N11318": {
+        "voisins": [
+            "N13148",
+            "N13178",
+            "N32301"
+        ],
+        "incidence": [
+            "T456",
+            "T117",
+            "T457"
+        ],
+        "nom": "PRIMAT|BERTHELOT",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89693206,
+                45.75827888
+            ]
+        }
+    },
+    "N13179": {
+        "voisins": [
+            "N13133",
+            "N13178",
+            "N32301"
+        ],
+        "incidence": [
+            "T51750",
+            "T54464",
+            "T54465",
+            "T5052",
+            "T51754",
+            "T51923",
+            "T52802"
+        ],
+        "nom": "DECORPS|CYPRIAN|BLUM|BARATIN",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.90086234,
+                45.76028669
+            ]
+        }
+    },
+    "N13411": {
+        "voisins": [
+            "N13410"
+        ],
+        "incidence": [
+            "T387"
+        ],
+        "nom": "COTE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89820849,
+                45.76117902
+            ]
+        }
+    },
+    "N13180": {
+        "voisins": [
+            "N13496",
+            "N13412",
+            "N13410"
+        ],
+        "incidence": [
+            "T19582",
+            "T19759",
+            "T25469",
+            "T19442"
+        ],
+        "nom": "REGUILLON|FRAPPAZ|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89653966,
+                45.76165462
+            ]
+        }
+    },
+    "N13148": {
+        "voisins": [
+            "N13147",
+            "N13150",
+            "N11318"
+        ],
+        "incidence": [
+            "T462",
+            "T456",
+            "T25435"
+        ],
+        "nom": "PRIMAT|DUCROIZE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89539092,
+                45.75821951
+            ]
+        }
+    },
+    "N13149": {
+        "voisins": [
+            "N13147",
+            "N13150",
+            "N13146"
+        ],
+        "incidence": [
+            "T25470",
+            "T119",
+            "T1043"
+        ],
+        "nom": "CAROTTE|BLUM",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89486219,
+                45.75982291
+            ]
+        }
+    },
+    "N13178": {
+        "voisins": [
+            "N11318",
+            "N13179"
+        ],
+        "incidence": [
+            "T117",
+            "T433",
+            "T54465"
+        ],
+        "nom": "PRIMAT|DECORPS",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89991567,
+                45.7582452
+            ]
+        }
+    },
+    "N13133": {
+        "voisins": [
+            "N13179",
+            "N26534",
+            "N13132"
+        ],
+        "incidence": [
+            "T5052",
+            "T42369",
+            "T48537",
+            "T25499"
+        ],
+        "nom": "REGUILLON|CHEVREUL|BARATIN",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.90030256,
+                45.76317076
+            ]
+        }
+    },
+    "N13496": {
+        "voisins": [
+            "N13110",
+            "N13497",
+            "N13180"
+        ],
+        "incidence": [
+            "T19420",
+            "T15277",
+            "T19442"
+        ],
+        "nom": "PROGRES|FRAPPAZ",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89450236,
+                45.76180781
+            ]
+        }
+    },
+    "N13412": {
+        "voisins": [
+            "N13247",
+            "N13180",
+            "N13914"
+        ],
+        "incidence": [
+            "T15226",
+            "T19759",
+            "T25475"
+        ],
+        "nom": "REGUILLON|CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.8972875,
+                45.76177832
+            ]
+        }
+    },
+    "N13147": {
+        "voisins": [
+            "N13149",
+            "N13145",
+            "N13148"
+        ],
+        "incidence": [
+            "T119",
+            "T146",
+            "T25435"
+        ],
+        "nom": "PRIMAT|CAROTTE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89488537,
+                45.75820525
+            ]
+        }
+    },
+    "N13146": {
+        "voisins": [
+            "N13145",
+            "N13149"
+        ],
+        "incidence": [
+            "T14346",
+            "T25428",
+            "T1043"
+        ],
+        "nom": "POIZAT|BLUM",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89306495,
+                45.75964456
+            ]
+        }
+    },
+    "N26534": {
+        "voisins": [
+            "N13133",
+            "N13247",
+            "N26535"
+        ],
+        "incidence": [
+            "T42370",
+            "T42369",
+            "T42371"
+        ],
+        "nom": "REGUILLON|BAYET",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89851707,
+                45.76205752
+            ]
+        }
+    },
+    "N13132": {
+        "voisins": [
+            "N13133",
+            "N13125"
+        ],
+        "incidence": [
+            "T18974",
+            "T25498",
+            "T25499"
+        ],
+        "nom": "CHEVREUL",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89935032,
+                45.76359672
+            ]
+        }
+    },
+    "N13110": {
+        "voisins": [
+            "N13496",
+            "N13111",
+            "N13112"
+        ],
+        "incidence": [
+            "T28986",
+            "T19420",
+            "T25491",
+            "T432",
+            "T25468"
+        ],
+        "nom": "SAUVY|PROGRES|MARTIN",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89434363,
+                45.76267647
+            ]
+        }
+    },
+    "N13497": {
+        "voisins": [
+            "N13496",
+            "N13111"
+        ],
+        "incidence": [
+            "T25471",
+            "T15277",
+            "T34533"
+        ],
+        "nom": "FRAPPAZ|BAISSE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89395001,
+                45.76161288
+            ]
+        }
+    },
+    "N13247": {
+        "voisins": [
+            "N13412",
+            "N20231",
+            "N26534"
+        ],
+        "incidence": [
+            "T15226",
+            "T28900",
+            "T42370"
+        ],
+        "nom": "REGUILLON|BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89779867,
+                45.76189607
+            ]
+        }
+    },
+    "N13914": {
+        "voisins": [
+            "N13913",
+            "N13412"
+        ],
+        "incidence": [
+            "T25477",
+            "T25476",
+            "T25475"
+        ],
+        "nom": "CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.8972488,
+                45.76190299
+            ]
+        }
+    },
+    "N13145": {
+        "voisins": [
+            "N13147",
+            "N13146"
+        ],
+        "incidence": [
+            "T14346",
+            "T25430",
+            "T146"
+        ],
+        "nom": "PRIMAT|POIZAT",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89330719,
+                45.75816789
+            ]
+        }
+    },
+    "N26535": {
+        "voisins": [
+            "N26534"
+        ],
+        "incidence": [
+            "T42371"
+        ],
+        "nom": "BAYET",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89924662,
+                45.76130084
+            ]
+        }
+    },
+    "N13125": {
+        "voisins": [
+            "N13132",
+            "N13124",
+            "N13123"
+        ],
+        "incidence": [
+            "T14319",
+            "T388",
+            "T25498"
+        ],
+        "nom": "PASTEUR|CHEVREUL",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.8984127,
+                45.76381452
+            ]
+        }
+    },
+    "N13111": {
+        "voisins": [
+            "N13110",
+            "N13497"
+        ],
+        "incidence": [
+            "T382",
+            "T28986",
+            "T25468",
+            "T25471"
+        ],
+        "nom": "SAUVY|MARTIN|BAISSE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89341122,
+                45.76209365
+            ]
+        }
+    },
+    "N13112": {
+        "voisins": [
+            "N27003",
+            "N13110"
+        ],
+        "incidence": [
+            "T47242",
+            "T431",
+            "T25491"
+        ],
+        "nom": "MARTIN|JACOB|FAILLEBIN",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89538561,
+                45.76273319
+            ]
+        }
+    },
+    "N20231": {
+        "voisins": [
+            "N20232",
+            "N13916",
+            "N13247"
+        ],
+        "incidence": [
+            "T28900",
+            "T28903",
+            "T28899"
+        ],
+        "nom": "BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.8971683,
+                45.76305134
+            ]
+        }
+    },
+    "N13913": {
+        "voisins": [
+            "N13914",
+            "N13287"
+        ],
+        "incidence": [
+            "T25477",
+            "T25476",
+            "T23636"
+        ],
+        "nom": "CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89721983,
+                45.76207205
+            ]
+        }
+    },
+    "N13124": {
+        "voisins": [
+            "N13119",
+            "N13916",
+            "N13125"
+        ],
+        "incidence": [
+            "T388",
+            "T25496",
+            "T25494"
+        ],
+        "nom": "CHEVREUL|BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89693199,
+                45.76383858
+            ]
+        }
+    },
+    "N13123": {
+        "voisins": [
+            "N13119",
+            "N13125"
+        ],
+        "incidence": [
+            "T378",
+            "T14319",
+            "T14320"
+        ],
+        "nom": "ROBIN|PASTEUR",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89851225,
+                45.76435855
+            ]
+        }
+    },
+    "N27003": {
+        "voisins": [
+            "N13113",
+            "N13112",
+            "N27002"
+        ],
+        "incidence": [
+            "T42985",
+            "T42984",
+            "T42986",
+            "T47242"
+        ],
+        "nom": "PELLET|JACOB",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89578096,
+                45.7645499
+            ]
+        }
+    },
+    "N20232": {
+        "voisins": [
+            "N13287",
+            "N13916",
+            "N20231"
+        ],
+        "incidence": [
+            "T28901",
+            "T28902",
+            "T28903"
+        ],
+        "nom": "CURIE|BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89673878,
+                45.76319441
+            ]
+        }
+    },
+    "N13916": {
+        "voisins": [
+            "N20232",
+            "N13124",
+            "N20231"
+        ],
+        "incidence": [
+            "T28902",
+            "T25496",
+            "T28899"
+        ],
+        "nom": "CURIE|BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89707517,
+                45.76323569
+            ]
+        }
+    },
+    "N13287": {
+        "voisins": [
+            "N13913",
+            "N20232",
+            "N13920"
+        ],
+        "incidence": [
+            "T28901",
+            "T23635",
+            "T23636"
+        ],
+        "nom": "CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89634033,
+                45.76315065
+            ]
+        }
+    },
+    "N13119": {
+        "voisins": [
+            "N13123",
+            "N13117",
+            "N13920",
+            "N13124"
+        ],
+        "incidence": [
+            "T378",
+            "T25492",
+            "T25493",
+            "T25494"
+        ],
+        "nom": "ROBIN|BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89697609,
+                45.76439758
+            ]
+        }
+    },
+    "N13113": {
+        "voisins": [
+            "N27003"
+        ],
+        "incidence": [
+            "T42984"
+        ],
+        "nom": "PELLET",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89589915,
+                45.76409638
+            ]
+        }
+    },
+    "N27002": {
+        "voisins": [
+            "N13118",
+            "N13920",
+            "N27003"
+        ],
+        "incidence": [
+            "T42982",
+            "T42986",
+            "T42983"
+        ],
+        "nom": "ROBIN|JACOB",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89624272,
+                45.76462455
+            ]
+        }
+    },
+    "N13920": {
+        "voisins": [
+            "N13119",
+            "N27002",
+            "N13287"
+        ],
+        "incidence": [
+            "T23635",
+            "T42982",
+            "T25493"
+        ],
+        "nom": "ROBIN|CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89657999,
+                45.76440805
+            ]
+        }
+    },
+    "N13117": {
+        "voisins": [
+            "N13119",
+            "N13118",
+            "N13120"
+        ],
+        "incidence": [
+            "T25532",
+            "T25492",
+            "T25535",
+            "T25534"
+        ],
+        "nom": "BERGONIER|BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89700448,
+                45.76494442
+            ]
+        }
+    },
+    "N13118": {
+        "voisins": [
+            "N27002",
+            "N13117"
+        ],
+        "incidence": [
+            "T25533",
+            "T42983",
+            "T25534"
+        ],
+        "nom": "ROBIN|BERGONIER",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89616098,
+                45.76496604
+            ]
+        }
+    },
+    "N13120": {
+        "voisins": [
+            "N13117"
+        ],
+        "incidence": [
+            "T25541",
+            "T25535",
+            "T25543"
+        ],
+        "nom": "BERGONIER",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.8974947,
+                45.76493336
+            ]
+        }
+    }
+}

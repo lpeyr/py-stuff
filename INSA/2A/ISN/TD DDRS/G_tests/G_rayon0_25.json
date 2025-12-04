@@ -1,0 +1,250 @@
+{
+    "N20237": {
+        "voisins": [
+            "N32301",
+            "N13410",
+            "N20236"
+        ],
+        "incidence": [
+            "T28912",
+            "T28911",
+            "T28913"
+        ],
+        "nom": "COUTURIER|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89677803,
+                45.76064098
+            ]
+        }
+    },
+    "N32301": {
+        "voisins": [
+            "N20237",
+            "N20236"
+        ],
+        "incidence": [
+            "T28912",
+            "T28910",
+            "T54464",
+            "T457",
+            "T51750"
+        ],
+        "nom": "BLUM|BERTHELOT|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89687518,
+                45.75997792
+            ]
+        }
+    },
+    "N13410": {
+        "voisins": [
+            "N20237",
+            "N13411",
+            "N13180"
+        ],
+        "incidence": [
+            "T28911",
+            "T25469",
+            "T387"
+        ],
+        "nom": "COTE|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89672401,
+                45.76106382
+            ]
+        }
+    },
+    "N20236": {
+        "voisins": [
+            "N20237",
+            "N13150",
+            "N32301"
+        ],
+        "incidence": [
+            "T28910",
+            "T28909",
+            "T28913"
+        ],
+        "nom": "COUTURIER|BLUM",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89579168,
+                45.75989707
+            ]
+        }
+    },
+    "N13411": {
+        "voisins": [
+            "N13410"
+        ],
+        "incidence": [
+            "T387"
+        ],
+        "nom": "COTE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89820849,
+                45.76117902
+            ]
+        }
+    },
+    "N13180": {
+        "voisins": [
+            "N13412",
+            "N13410"
+        ],
+        "incidence": [
+            "T19759",
+            "T25469",
+            "T19442",
+            "T19582"
+        ],
+        "nom": "REGUILLON|FRAPPAZ|BERNAIX",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89653966,
+                45.76165462
+            ]
+        }
+    },
+    "N13150": {
+        "voisins": [
+            "N13149",
+            "N20236"
+        ],
+        "incidence": [
+            "T25470",
+            "T462",
+            "T28909"
+        ],
+        "nom": "DUCROIZE|BLUM",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89536702,
+                45.7598649
+            ]
+        }
+    },
+    "N13412": {
+        "voisins": [
+            "N13180",
+            "N13914",
+            "N13247"
+        ],
+        "incidence": [
+            "T19759",
+            "T25475",
+            "T15226"
+        ],
+        "nom": "REGUILLON|CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.8972875,
+                45.76177832
+            ]
+        }
+    },
+    "N13149": {
+        "voisins": [
+            "N13150"
+        ],
+        "incidence": [
+            "T1043",
+            "T119",
+            "T25470"
+        ],
+        "nom": "CAROTTE|BLUM",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89486219,
+                45.75982291
+            ]
+        }
+    },
+    "N13914": {
+        "voisins": [
+            "N13913",
+            "N13412"
+        ],
+        "incidence": [
+            "T25476",
+            "T25477",
+            "T25475"
+        ],
+        "nom": "CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.8972488,
+                45.76190299
+            ]
+        }
+    },
+    "N13247": {
+        "voisins": [
+            "N13412",
+            "N26534"
+        ],
+        "incidence": [
+            "T42370",
+            "T15226",
+            "T28900"
+        ],
+        "nom": "REGUILLON|BASCH",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89779867,
+                45.76189607
+            ]
+        }
+    },
+    "N13913": {
+        "voisins": [
+            "N13914"
+        ],
+        "incidence": [
+            "T25476",
+            "T25477",
+            "T23636"
+        ],
+        "nom": "CURIE",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89721983,
+                45.76207205
+            ]
+        }
+    },
+    "N26534": {
+        "voisins": [
+            "N13247"
+        ],
+        "incidence": [
+            "T42369",
+            "T42370",
+            "T42371"
+        ],
+        "nom": "REGUILLON|BAYET",
+        "geometry": {
+            "type": "Point",
+            "coordinates": [
+                4.89851707,
+                45.76205752
+            ]
+        }
+    }
+}
