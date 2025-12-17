@@ -83,8 +83,13 @@ def BFS_complet_pour_tout_h_avec_calcul_distance(l_noms_nf, graphe):
     
     deploy = init_affectation(l_noms_nf)
     
-    #A completer
-    
+    for node in graphe:
+        if node in deploy:
+            continue
+        hauteurs = BFS_algos.BFS_hauteurs(node, graphe)
+        nf = BFS_algos.pf_le_pproche(hauteurs, l_noms_nf)
+        deploy[nf].append(node)
+
     return deploy
 
        
@@ -99,9 +104,13 @@ def BFS_pour_tout_h_avec_arret_des_prem_nf(l_noms_nf, graphe):
     Entrées : l_noms_nf (liste des noeuds de fraicheur), graphe
     Sortie : dictionnaire des affectations associant chaque noeud de fraicheur à la liste des noeuds habitant s'y rendant
     '''
-    deploy =  init_affectation(l_noms_nf)
+    deploy =  init_affectation(l_noms_nf)    
     
-    #A completer
+    for node in graphe:
+        if node in deploy:
+            continue
+        nf = BFS_algos.BFS_avec_arret(node, graphe, l_noms_nf)
+        deploy[nf].append(node)
     
     return deploy
 
@@ -116,9 +125,12 @@ def BFS_complet_pour_tout_nf(l_noms_nf, graphe):
     Sortie : dictionnaire des affectations associant chaque noeud de fraicheur à la liste des noeuds habitant s'y rendant
     '''
     deploy =  init_affectation(l_noms_nf)
-    
-    #A completer
-    
+    for nf in l_noms_nf:
+        dico_ancetre = dict()
+        BFS_algos.BFS_meilleur_ancetre(nf, graphe, dico_ancetre)
+        for sommet in dico_ancetre:
+            if dico_ancetre[sommet][0] is not None:
+                deploy[sommet] = dico_ancetre[sommet][0]
     return deploy
 
    
@@ -145,7 +157,8 @@ def BFS_elague_pour_tout_nf(l_noms_nf, graphe):
 ############################################### 
 if __name__ == "__main__":
 
-    noms_graphes = ['G_rayon0_25','G_rayon0_5','G_rayon1_0','G_rayon2_0','G_rayon2_5','G_rayon3_0','G_rayon6_0']
+    #noms_graphes = ['G_rayon0_25','G_rayon0_5','G_rayon1_0','G_rayon2_0','G_rayon2_5','G_rayon3_0','G_rayon6_0']
+    noms_graphes = ['G_rayon0_25','G_rayon0_5','G_rayon1_0',]
     algos = ["algo1","algo2","algo3","algo4","algo5"]
 
     nb_pts_fraich = 3 #nombre de pts de fraicheurs tirés aléatoirement (< 12)
