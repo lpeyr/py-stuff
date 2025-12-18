@@ -147,9 +147,18 @@ def BFS_elague_pour_tout_nf(l_noms_nf, graphe):
     '''
     
     deploy =  init_affectation(l_noms_nf)
+    dico_ancetre = dict()
     
-    #A completer
-            
+    for nf in l_noms_nf:
+        BFS_algos.BFS_meilleur_ancetre(nf, graphe, dico_ancetre)
+
+    for sommet in dico_ancetre:
+        if dico_ancetre[sommet][0] is not None:
+            ancetre = sommet
+            while dico_ancetre[ancetre][0] is not None:
+                ancetre = dico_ancetre[ancetre][0]
+            deploy[sommet] = ancetre
+  
     return deploy
 
 #############################################
@@ -158,7 +167,7 @@ def BFS_elague_pour_tout_nf(l_noms_nf, graphe):
 if __name__ == "__main__":
 
     #noms_graphes = ['G_rayon0_25','G_rayon0_5','G_rayon1_0','G_rayon2_0','G_rayon2_5','G_rayon3_0','G_rayon6_0']
-    noms_graphes = ['G_rayon0_25','G_rayon0_5','G_rayon1_0',]
+    noms_graphes = ['G_rayon0_25','G_rayon0_5','G_rayon1_0','G_rayon2_0','G_rayon2_5','G_rayon3_0','G_rayon6_0']
     algos = ["algo1","algo2","algo3","algo4","algo5"]
 
     nb_pts_fraich = 3 #nombre de pts de fraicheurs tirés aléatoirement (< 12)
