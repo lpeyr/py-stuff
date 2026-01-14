@@ -70,7 +70,6 @@ def affiche_stats_matiere_v2(dico_mat, matiere):
     print(dico_mat[matiere])
 
 
-
 # Question 1.5
 def affiche_notes_eleve(liste_dico, nom, prenom):
     """Fonction qui affiche les notes d'un eleve dont le nom et le prenom sont fournis

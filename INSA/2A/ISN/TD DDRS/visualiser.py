@@ -9,9 +9,10 @@ Created on Tue Nov 25 15:54:00 2025
 import json
 import map_villeurbanne
 
+
 def lire_graphe(nom_fichier):
-    '''Fonction qui lit le fichier json dont le nom est fourni en paramètre et retourne un dictionnaire 
-    representant le graphe'''
+    """Fonction qui lit le fichier json dont le nom est fourni en paramètre et retourne un dictionnaire
+    representant le graphe"""
     with open(nom_fichier, "r", encoding="utf-8") as f:
         graphe_noeuds = json.load(f)
     return graphe_noeuds
