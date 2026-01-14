@@ -1,0 +1,18 @@
+# passage 1
+Indiana -> archeo
+
+# passage 2
+Indiana -> archeo
+Bob -> Topographie
+
+# passage 3
+
+Indiana -> archeo
+Bob -> N/A
+Dora -> Topographie
+
+# passage 4
+
+Indiana -> archeo
+Bob -> sponge factory
+Dora -> Topographie

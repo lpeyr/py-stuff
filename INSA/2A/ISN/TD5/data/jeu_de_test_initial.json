@@ -1,0 +1,50 @@
+[
+    [
+        "Bob", 
+        "Dora", 
+        "Indiana Jones"
+    ],
+    [
+        "Sponge factory", 
+        "Topographie", 
+        "Archéologie"
+    ],
+
+
+    {
+        "Indiana Jones" : [
+            "Archéologie", 
+            "Topographie", 
+            "Sponge factory"
+        ],
+        "Bob" : [
+            "Archéologie", 
+            "Topographie", 
+            "Sponge factory"
+        ],
+        "Dora" : [
+            "Topographie", 
+            "Archéologie", 
+            "Sponge factory"
+        ]
+    },
+
+    {
+        "Sponge factory": {
+            "Bob"          :20  ,  
+            "Dora"         :0,   
+            "Indiana Jones":100
+        },
+        "Topographie" : {
+            "Bob"          :20  ,  
+            "Dora"         :100, 
+            "Indiana Jones":100
+        },
+        "Archéologie" : {
+            "Bob"          :20  ,  
+            "Dora"         :100, 
+            "Indiana Jones":90 
+        }
+    }
+
+]
