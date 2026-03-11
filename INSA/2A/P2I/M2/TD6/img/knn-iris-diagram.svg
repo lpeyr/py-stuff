@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8f9fa" rx="10" ry="10"/>
+  
+  <!-- Title -->
+  <text x="400" y="30" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333">K-Nearest Neighbors Classification (Iris Dataset)</text>
+  
+  <!-- Coordinate System - Axes -->
+  <line x1="100" y1="500" x2="650" y2="500" stroke="#333" stroke-width="2"/>
+  <line x1="100" y1="500" x2="100" y2="100" stroke="#333" stroke-width="2"/>
+  
+  <!-- Axis Labels -->
+  <text x="375" y="540" font-family="Arial" font-size="18" text-anchor="middle" fill="#333">Petal Length (cm)</text>
+  <text x="50" y="300" font-family="Arial" font-size="18" text-anchor="middle" transform="rotate(-90,50,300)" fill="#333">Petal Width (cm)</text>
+  
+  <!-- Axis Tick Marks and Values - X Axis -->
+  <line x1="100" y1="500" x2="100" y2="510" stroke="#333" stroke-width="2"/>
+  <text x="100" y="530" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">1</text>
+  
+  <line x1="200" y1="500" x2="200" y2="510" stroke="#333" stroke-width="2"/>
+  <text x="200" y="530" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">2</text>
+  
+  <line x1="300" y1="500" x2="300" y2="510" stroke="#333" stroke-width="2"/>
+  <text x="300" y="530" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">3</text>
+  
+  <line x1="400" y1="500" x2="400" y2="510" stroke="#333" stroke-width="2"/>
+  <text x="400" y="530" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">4</text>
+  
+  <line x1="500" y1="500" x2="500" y2="510" stroke="#333" stroke-width="2"/>
+  <text x="500" y="530" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">5</text>
+  
+  <line x1="600" y1="500" x2="600" y2="510" stroke="#333" stroke-width="2"/>
+  <text x="600" y="530" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">6</text>
+  
+  <!-- Axis Tick Marks and Values - Y Axis -->
+  <line x1="90" y1="500" x2="100" y2="500" stroke="#333" stroke-width="2"/>
+  <text x="80" y="505" font-family="Arial" font-size="12" text-anchor="end" fill="#333">0</text>
+  
+  <line x1="90" y1="450" x2="100" y2="450" stroke="#333" stroke-width="2"/>
+  <text x="80" y="455" font-family="Arial" font-size="12" text-anchor="end" fill="#333">0.5</text>
+  
+  <line x1="90" y1="400" x2="100" y2="400" stroke="#333" stroke-width="2"/>
+  <text x="80" y="405" font-family="Arial" font-size="12" text-anchor="end" fill="#333">1.0</text>
+  
+  <line x1="90" y1="350" x2="100" y2="350" stroke="#333" stroke-width="2"/>
+  <text x="80" y="355" font-family="Arial" font-size="12" text-anchor="end" fill="#333">1.5</text>
+  
+  <line x1="90" y1="300" x2="100" y2="300" stroke="#333" stroke-width="2"/>
+  <text x="80" y="305" font-family="Arial" font-size="12" text-anchor="end" fill="#333">2.0</text>
+  
+  <line x1="90" y1="250" x2="100" y2="250" stroke="#333" stroke-width="2"/>
+  <text x="80" y="255" font-family="Arial" font-size="12" text-anchor="end" fill="#333">2.5</text>
+  
+  <line x1="90" y1="200" x2="100" y2="200" stroke="#333" stroke-width="2"/>
+  <text x="80" y="205" font-family="Arial" font-size="12" text-anchor="end" fill="#333">3.0</text>
+  
+  <line x1="90" y1="150" x2="100" y2="150" stroke="#333" stroke-width="2"/>
+  <text x="80" y="155" font-family="Arial" font-size="12" text-anchor="end" fill="#333">3.5</text>
+  
+  <line x1="90" y1="100" x2="100" y2="100" stroke="#333" stroke-width="2"/>
+  <text x="80" y="105" font-family="Arial" font-size="12" text-anchor="end" fill="#333">4.0</text>
+  
+  <!-- Grid Lines (lighter) -->
+  <line x1="100" y1="450" x2="650" y2="450" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="400" x2="650" y2="400" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="350" x2="650" y2="350" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="300" x2="650" y2="300" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="250" x2="650" y2="250" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="200" x2="650" y2="200" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="150" x2="650" y2="150" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="100" y1="100" x2="650" y2="100" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <line x1="200" y1="100" x2="200" y2="500" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="300" y1="100" x2="300" y2="500" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="400" y1="100" x2="400" y2="500" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="500" y1="100" x2="500" y2="500" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  <line x1="600" y1="100" x2="600" y2="500" stroke="#ddd" stroke-width="1" stroke-dasharray="5,5"/>
+  
+  <!-- Data Points - Iris Setosa (pink) -->
+  <circle cx="140" cy="480" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="130" cy="490" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="150" cy="475" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="145" cy="485" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="160" cy="480" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="155" cy="490" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="170" cy="480" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="165" cy="470" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="150" cy="460" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  <circle cx="140" cy="465" r="8" fill="#FF9EEA" stroke="#333" stroke-width="1"/>
+  
+  <!-- Data Points - Iris Versicolor (blue) -->
+  <circle cx="350" cy="350" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="330" cy="365" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="370" cy="340" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="390" cy="330" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="410" cy="350" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="395" cy="360" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="365" cy="370" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="380" cy="345" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="400" cy="335" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  <circle cx="420" cy="355" r="8" fill="#6EB5FF" stroke="#333" stroke-width="1"/>
+  
+  <!-- Data Points - Iris Virginica (green) -->
+  <circle cx="560" cy="200" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="580" cy="180" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="590" cy="170" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="570" cy="190" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="550" cy="210" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="540" cy="220" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="480" cy="250" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="575" cy="195" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="585" cy="185" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  <circle cx="565" cy="205" r="8" fill="#85FF6E" stroke="#333" stroke-width="1"/>
+  
+  <!-- New Data Point to Classify (yellow with question mark) -->
+  <circle cx="450" cy="300" r="12" fill="#FFD700" stroke="#333" stroke-width="2"/>
+  <text x="450" y="305" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333">?</text>
+  
+  <!-- K=5 Nearest Neighbors Circle -->
+  <circle cx="450" cy="300" r="90" fill="none" stroke="#FF5733" stroke-width="2" stroke-dasharray="5,5"/>
+  
+  <!-- Distance Lines to 5 Nearest Neighbors -->
+  <line x1="450" y1="300" x2="410" y2="350" stroke="#FF5733" stroke-width="1.5"/>
+  <line x1="450" y1="300" x2="420" y2="355" stroke="#FF5733" stroke-width="1.5"/>
+  <line x1="450" y1="300" x2="395" y2="360" stroke="#FF5733" stroke-width="1.5"/>
+  <line x1="450" y1="300" x2="400" y2="335" stroke="#FF5733" stroke-width="1.5"/>
+  <line x1="450" y1="300" x2="480" y2="250" stroke="#FF5733" stroke-width="1.5"/>
+  
+  <!-- Legend -->
+  <rect x="650" y="150" width="140" height="120" fill="#fff" stroke="#333" stroke-width="1" rx="5" ry="5"/>
+  <circle cx="670" cy="175" r="8" fill="#FF9EEA"/>
+  <text x="685" y="180" font-family="Arial" font-size="14" fill="#333">Iris Setosa</text>
+  <circle cx="670" cy="205" r="8" fill="#6EB5FF"/>
+  <text x="685" y="210" font-family="Arial" font-size="14" fill="#333">Iris Versicolor</text>
+  <circle cx="670" cy="235" r="8" fill="#85FF6E"/>
+  <text x="685" y="240" font-family="Arial" font-size="14" fill="#333">Iris Virginica</text>
+  <circle cx="670" cy="265" r="8" fill="#FFD700"/>
+  <text x="685" y="270" font-family="Arial" font-size="14" fill="#333">New Sample</text>
+  
+  <!-- KNN Explanation Box -->
+  <rect x="150" y="30" width="280" height="90" fill="#fff" stroke="#333" stroke-width="1" rx="5" ry="5"/>
+  <text x="160" y="50" font-family="Arial" font-size="14" font-weight="bold" fill="#333">K-Nearest Neighbors (K=5):</text>
+  <text x="160" y="70" font-family="Arial" font-size="12" fill="#333">• 4 neighbors are Versicolor (blue)</text>
+  <text x="160" y="90" font-family="Arial" font-size="12" fill="#333">• 1 neighbor is Virginica (green)</text>
+  <text x="160" y="110" font-family="Arial" font-size="12" fill="#333">• Prediction: Iris Versicolor (majority)</text>
+  
+  <!-- Decision Box -->
+  <rect x="500" y="50" width="240" height="80" fill="#e6f3ff" stroke="#3f87e5" stroke-width="2" rx="10" ry="10"/>
+  <text x="620" y="80" font-family="Arial" font-size="16" text-anchor="middle" font-weight="bold" fill="#333">Classification Result:</text>
+  <text x="620" y="110" font-family="Arial" font-size="16" text-anchor="middle" fill="#333">Iris Versicolor (4/5 votes)</text>
+  
+  <!-- K value selector -->
+  <rect x="650" y="300" width="140" height="130" fill="#fff" stroke="#333" stroke-width="1" rx="5" ry="5"/>
+  <text x="720" y="320" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">K Value Selection</text>
+  <circle cx="680" cy="350" r="15" fill="#fff" stroke="#aaa" stroke-width="1"/>
+  <text x="680" y="355" font-family="Arial" font-size="14" text-anchor="middle" fill="#aaa">3</text>
+  <circle cx="720" cy="350" r="15" fill="#FF5733" stroke="#333" stroke-width="2"/>
+  <text x="720" y="355" font-family="Arial" font-size="14" text-anchor="middle" font-weight="bold" fill="#333">5</text>
+  <circle cx="760" cy="350" r="15" fill="#fff" stroke="#aaa" stroke-width="1"/>
+  <text x="760" y="355" font-family="Arial" font-size="14" text-anchor="middle" fill="#aaa">7</text>
+  <text x="720" y="380" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">Choosing optimal K</text>
+  <text x="720" y="400" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">balances overfitting</text>
+  <text x="720" y="420" font-family="Arial" font-size="12" text-anchor="middle" fill="#333">and underfitting</text>
+</svg>

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500">
+  <!-- Background -->
+  <rect width="800" height="500" fill="#f8f9fa" rx="10" ry="10"/>
+  
+  <!-- Layer Labels -->
+  <text x="120" y="40" font-family="Arial" font-size="20" text-anchor="middle" fill="#333">Input Layer</text>
+  <text x="400" y="40" font-family="Arial" font-size="20" text-anchor="middle" fill="#333">Hidden Layer</text>
+  <text x="680" y="40" font-family="Arial" font-size="20" text-anchor="middle" fill="#333">Output Layer</text>
+  
+  <!-- Input Layer Nodes -->
+  <circle cx="120" cy="150" r="30" fill="#6eb5ff" stroke="#3f87e5" stroke-width="2"/>
+  <circle cx="120" cy="250" r="30" fill="#6eb5ff" stroke="#3f87e5" stroke-width="2"/>
+  <circle cx="120" cy="350" r="30" fill="#6eb5ff" stroke="#3f87e5" stroke-width="2"/>
+  
+  <!-- Labels for input nodes -->
+  <text x="120" y="155" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">x₁</text>
+  <text x="120" y="255" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">x₂</text>
+  <text x="120" y="355" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">x₃</text>
+  
+  <!-- Hidden Layer Nodes -->
+  <circle cx="400" cy="120" r="30" fill="#ff9e6e" stroke="#e57e3f" stroke-width="2"/>
+  <circle cx="400" cy="220" r="30" fill="#ff9e6e" stroke="#e57e3f" stroke-width="2"/>
+  <circle cx="400" cy="320" r="30" fill="#ff9e6e" stroke="#e57e3f" stroke-width="2"/>
+  <circle cx="400" cy="420" r="30" fill="#ff9e6e" stroke="#e57e3f" stroke-width="2"/>
+  
+  <!-- Labels for hidden nodes -->
+  <text x="400" y="125" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">h₁</text>
+  <text x="400" y="225" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">h₂</text>
+  <text x="400" y="325" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">h₃</text>
+  <text x="400" y="425" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">h₄</text>
+  
+  <!-- Output Layer Nodes -->
+  <circle cx="680" cy="200" r="30" fill="#85ff6e" stroke="#55e53f" stroke-width="2"/>
+  <circle cx="680" cy="300" r="30" fill="#85ff6e" stroke="#55e53f" stroke-width="2"/>
+  
+  <!-- Labels for output nodes -->
+  <text x="680" y="205" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">y₁</text>
+  <text x="680" y="305" font-family="Arial" font-size="14" text-anchor="middle" fill="#fff">y₂</text>
+  
+  <!-- Connections from Input to Hidden Layer -->
+  <!-- Input 1 to all hidden -->
+  <line x1="140" y1="135" x2="375" y2="110" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="150" x2="375" y2="212" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="165" x2="375" y2="315" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="180" x2="375" y2="410" stroke="#aaa" stroke-width="2"/>
+  
+  <!-- Input 2 to all hidden -->
+  <line x1="140" y1="235" x2="375" y2="125" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="250" x2="375" y2="220" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="265" x2="375" y2="320" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="280" x2="375" y2="415" stroke="#aaa" stroke-width="2"/>
+  
+  <!-- Input 3 to all hidden -->
+  <line x1="140" y1="335" x2="375" y2="130" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="350" x2="375" y2="228" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="365" x2="375" y2="325" stroke="#aaa" stroke-width="2"/>
+  <line x1="140" y1="380" x2="375" y2="420" stroke="#aaa" stroke-width="2"/>
+  
+  <!-- Connections from Hidden to Output Layer -->
+  <!-- Hidden 1 to all output -->
+  <line x1="425" y1="110" x2="655" y2="190" stroke="#aaa" stroke-width="2"/>
+  <line x1="425" y1="130" x2="655" y2="290" stroke="#aaa" stroke-width="2"/>
+  
+  <!-- Hidden 2 to all output -->
+  <line x1="425" y1="210" x2="655" y2="195" stroke="#aaa" stroke-width="2"/>
+  <line x1="425" y1="230" x2="655" y2="295" stroke="#aaa" stroke-width="2"/>
+  
+  <!-- Hidden 3 to all output -->
+  <line x1="425" y1="310" x2="655" y2="205" stroke="#aaa" stroke-width="2"/>
+  <line x1="425" y1="330" x2="655" y2="300" stroke="#aaa" stroke-width="2"/>
+  
+  <!-- Hidden 4 to all output -->
+  <line x1="425" y1="410" x2="655" y2="210" stroke="#aaa" stroke-width="2"/>
+  <line x1="425" y1="430" x2="655" y2="305" stroke="#aaa" stroke-width="2"/>
+  
+  <!-- Selected Weight Labels -->
+  <text x="250" y="165" font-family="Arial" font-size="12" fill="#333">w₁₁</text>
+  <text x="250" y="260" font-family="Arial" font-size="12" fill="#333">w₂₂</text>
+  <text x="250" y="370" font-family="Arial" font-size="12" fill="#333">w₃₄</text>
+  <text x="550" y="190" font-family="Arial" font-size="12" fill="#333">w₁₁</text>
+  <text x="550" y="300" font-family="Arial" font-size="12" fill="#333">w₄₂</text>
+  
+  <!-- Activation Function Visualization -->
+  <rect x="250" y="450" width="280" height="40" fill="#fff" stroke="#333" stroke-width="1" rx="5" ry="5"/>
+  <text x="390" y="475" font-family="Arial" font-size="14" text-anchor="middle" fill="#333">Activation Function: ReLU, Sigmoid, etc.</text>
+  
+  <!-- Legend -->
+  <rect x="10" y="400" width="100" height="90" fill="#fff" stroke="#333" stroke-width="1" rx="5" ry="5"/>
+  <circle cx="25" cy="420" r="10" fill="#6eb5ff"/>
+  <text x="45" y="425" font-family="Arial" font-size="12" fill="#333">Input</text>
+  <circle cx="25" cy="445" r="10" fill="#ff9e6e"/>
+  <text x="45" y="450" font-family="Arial" font-size="12" fill="#333">Hidden</text>
+  <circle cx="25" cy="470" r="10" fill="#85ff6e"/>
+  <text x="45" y="475" font-family="Arial" font-size="12" fill="#333">Output</text>
+</svg>
